@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+      <span> <mat-icon>person</mat-icon>
+      Your Nicu Journey
+      </span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item>Settings</button>
+  <button mat-menu-item>Toggle Theme</button>
+  <button mat-menu-item>Contact</button>
+  <button mat-menu-item>Free Hugs</button>
+  <button mat-menu-item>Help Me!</button>
+</mat-menu>
+
