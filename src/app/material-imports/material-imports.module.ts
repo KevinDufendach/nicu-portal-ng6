@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
 
 
 // Add Angular material component imports here
@@ -16,7 +17,8 @@ const materialModules = [
   MatIconModule,
   MatTabsModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatListModule
 
 ];
 @NgModule({
