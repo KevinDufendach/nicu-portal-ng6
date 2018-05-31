@@ -1681,12 +1681,18 @@ export class OAuthService extends AuthConfig {
   }
 
   private storeAdditionalParameters(tokenResponse) {
+    const additionalParams = {};
+
     const tokenKeys = ['access_token', 'refresh_token', 'expires_in', 'scope'];
     Object.keys(tokenResponse).forEach(key => {
       if (!tokenKeys.includes(key)) { // don't store parameters related to token, stored elsewhere
-        this._storage.setItem(key, tokenResponse[key]);
+        additionalParams[key] = tokenResponse[key];
       }
     });
+
+    this._storage.setItem('additional_params', JSON.stringify(additionalParams));
+
+    console.log('setting additional items: ' + this._storage['additional_params']);
   }
 
   private tryLoginAuthorizationCode(): Promise<void> {
