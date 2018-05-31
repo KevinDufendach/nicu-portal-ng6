@@ -790,6 +790,10 @@ export class OAuthService extends AuthConfig {
     return this._storage.getItem('access_token');
   }
 
+  /**
+   * Get the refresh token
+   * @returns {string}
+   */
   public getRefreshToken(): string {
     return this._storage.getItem('refresh_token');
   }
@@ -1263,6 +1267,8 @@ export class OAuthService extends AuthConfig {
             tokenResponse.expires_in,
             tokenResponse.scope);
 
+          this.storeAdditionalParameters(tokenResponse);
+
           if (this.oidc && tokenResponse.id_token) {
             this.processIdToken(tokenResponse.id_token, tokenResponse.access_token).then(result => {
               this.storeIdToken(result);
@@ -1672,6 +1678,15 @@ export class OAuthService extends AuthConfig {
     if (refreshToken) {
       this._storage.setItem('refresh_token', refreshToken);
     }
+  }
+
+  private storeAdditionalParameters(tokenResponse) {
+    const tokenKeys = ['access_token', 'refresh_token', 'expires_in', 'scope'];
+    Object.keys(tokenResponse).forEach(key => {
+      if (!tokenKeys.includes(key)) { // don't store parameters related to token, stored elsewhere
+        this._storage.setItem(key, tokenResponse[key]);
+      }
+    });
   }
 
   private tryLoginAuthorizationCode(): Promise<void> {
