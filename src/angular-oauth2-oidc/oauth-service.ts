@@ -822,6 +822,17 @@ export class OAuthService extends AuthConfig {
   }
 
   /**
+   * Get additional parameters that have been saved after a log in
+   * @returns {object} key:value pairs of additional parameters from oAuth login
+   */
+  public getAdditionalParameters(): object {
+    if (!this._storage.getItem('additional_params')) {
+      return null;
+    }
+    return JSON.parse(this._storage.getItem('additional_params'));
+  }
+
+  /**
    * Checkes, whether there is a valid access_token.
    */
   public hasValidAccessToken(): boolean {
@@ -1691,8 +1702,6 @@ export class OAuthService extends AuthConfig {
     });
 
     this._storage.setItem('additional_params', JSON.stringify(additionalParams));
-
-    console.log('setting additional items: ' + this._storage['additional_params']);
   }
 
   private tryLoginAuthorizationCode(): Promise<void> {
