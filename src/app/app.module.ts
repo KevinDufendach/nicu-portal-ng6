@@ -11,6 +11,7 @@ import { JourneyMapComponent } from './journey-map/journey-map.component';
 import { LearningComponent } from './learning/learning.component';
 import { CareTeamComponent } from './care-team/care-team.component';
 import { NicViewComponent } from './nic-view/nic-view.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NicViewComponent } from './nic-view/nic-view.component';
     JourneyMapComponent,
     LearningComponent,
     CareTeamComponent,
-    NicViewComponent
+    NicViewComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,

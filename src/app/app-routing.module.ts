@@ -6,6 +6,7 @@ import {LearningComponent} from './learning/learning.component';
 import {CareTeamComponent} from './care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
 import {PatientInfoComponent} from './patient-info/patient-info.component';
+import {StartComponent} from './start/start.component';
 
 const routes = [
   {path: 'landing', component: LandingComponent},
@@ -14,11 +15,8 @@ const routes = [
   {path: 'learning', component: LearningComponent},
   {path: 'careteam', component: CareTeamComponent},
   {path: 'nicview', component: NicViewComponent},
-  // {path: 'index.html', component: TestAuthComponent},
-  // {path: 'login', component: SmartAuthComponent},
-  // {path: 'launch', component: SmartAuthComponent},
-  // {path: 'landing', component: SmartLandingComponent},
-   {path: '', redirectTo: 'landing', pathMatch: 'full'},
+  {path: 'start', component: StartComponent},
+  {path: '', redirectTo: 'start', pathMatch: 'full'},
 ];
 
 @NgModule({
