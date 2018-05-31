@@ -23,9 +23,9 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "angular-oauth2-oidc-codeflow": "^4.0.1-rc.1",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
+    "jsrsasign": "^8.0.12",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
-import {NullValidationHandler, OAuthService} from 'angular-oauth2-oidc-codeflow';
+// import {NullValidationHandler, OAuthService} from '../../../angular-oauth2-oidc/projects/lib/src/oauth-service';
 import {epicSmartAuthConfig} from './smart-config';
+import {OAuthService} from '../../angular-oauth2-oidc/oauth-service';
+import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/null-validation-handler';
 
 @Injectable({
   providedIn: 'root'

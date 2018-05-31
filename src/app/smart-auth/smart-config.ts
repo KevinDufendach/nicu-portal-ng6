@@ -1,6 +1,7 @@
 // noinspection TsLint
-import {AuthConfig} from 'angular-oauth2-oidc-codeflow';
+// import {AuthConfig} from 'angular-oauth2-oidc-codeflow';
 
+import {AuthConfig} from '../../angular-oauth2-oidc/auth.config';
 
 export const epicSmartAuthConfig: AuthConfig = {
   // https://manfredsteyer.github.io/angular-oauth2-oidc/docs/
