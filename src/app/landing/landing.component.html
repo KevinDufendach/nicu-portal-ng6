@@ -2,3 +2,20 @@
 <p>Text From Landing Component</p>
 
 <div>Token: {{token}}</div>
+
+<div>
+  <h4>Claims</h4>
+  <textarea>{{claims?.toString() | json}}</textarea>
+</div>
+
+<div>
+  <h4>Scopes</h4>
+  <textarea>{{scopes?.toString() | json}}</textarea>
+</div>
+
+<div>
+  <h4>Header</h4>
+  <textarea>{{header | json }}</textarea>
+</div>
+
+<button mat-button class="mat-warn" (click)="logOut()">Log out</button>

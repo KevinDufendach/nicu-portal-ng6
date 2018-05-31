@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EpicAuthService} from '../smart-auth/epic-auth.service';
 
 @Component({
@@ -8,12 +8,28 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
 })
 export class LandingComponent implements OnInit {
   token: string;
+  claims: object;
+  scopes: object;
+  header: string;
 
-  constructor(private epicAuthService: EpicAuthService) { }
-
-  ngOnInit() {
-    this.epicAuthService.completeLoginWithCode()
-      .then(_ => this.token = this.epicAuthService.getToken());
+  constructor(public epicAuthService: EpicAuthService) {
   }
 
+  ngOnInit() {
+    this.epicAuthService.completeLoginWithCode().then(_ => {
+        this.token = this.epicAuthService.oauthService.getAccessToken();
+        this.claims = this.epicAuthService.oauthService.getIdentityClaims();
+        this.scopes = this.epicAuthService.oauthService.getGrantedScopes();
+        this.epicAuthService.oauthService.getAuthorizationHeader().then(
+          h => {
+            this.header = h;
+          }
+        );
+      }
+    );
+  }
+
+  logOut() {
+    this.epicAuthService.oauthService.logOut();
+  }
 }

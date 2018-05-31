@@ -7,7 +7,7 @@ import {epicSmartAuthConfig} from './smart-config';
 })
 export class EpicAuthService {
 
-  constructor(private oauthService: OAuthService) {
+  constructor(public oauthService: OAuthService) {
     this.configureWithNewConfigApi();
   }
 
@@ -16,18 +16,16 @@ export class EpicAuthService {
   }
 
   completeLoginWithCode(): Promise<void> {
-    if (!this.oauthService.getAccessToken()) {
+    // check if already logged in with valid access token
+    if (!this.oauthService.hasValidAccessToken()) {
       return this.oauthService.tryLogin()
         .then(_ => console.log(this.oauthService.getAccessToken()));
     }
 
+    // if already logged in
     return new Promise<void>((resolve) => {
       resolve();
     });
-  }
-
-  getToken(): string {
-    return this.oauthService.getAccessToken();
   }
 
   private configureWithNewConfigApi() {
