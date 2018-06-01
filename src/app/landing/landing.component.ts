@@ -3,6 +3,7 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
 import {Observable} from 'rxjs';
 import {FhirService} from '../fhir/fhir.service';
+import Observation = fhir.Observation;
 
 @Component({
   selector: 'app-landing',
@@ -11,6 +12,8 @@ import {FhirService} from '../fhir/fhir.service';
 })
 export class LandingComponent implements OnInit {
   patient: Patient;
+  observationList: Observation[] = [];
+  weightList: any[] = [];
 
   constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
   }
@@ -24,6 +27,16 @@ export class LandingComponent implements OnInit {
 
   getPatient(): Observable<Patient> {
     return this.fhirService.getPatient();
+  }
+
+  getObservations(code) {
+    this.fhirService.getObservations(code).subscribe(
+      obs => {
+        this.observationList.push(obs);
+
+        this.weightList.push(obs.valueQuantity);
+      }
+    );
   }
 
   logOut() {

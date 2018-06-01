@@ -7,6 +7,15 @@
     <textarea>{{patient | json}}</textarea>
   </div>
 
+  <button mat-raised-button button (click)="getObservations('29463-7')">Get Observations</button>
+  <div>
+    <h4>Weight Observations</h4>
+    <textarea>{{observationList | json}}</textarea>
+    <textarea>{{weightList | json}}</textarea>
+
+    <!--<ul *ngFor="let obs of weightList">{{obs.div}}</ul>-->
+  </div>
+
   <button mat-button class="mat-warn" (click)="logOut()">Log out</button>
 </div>
 
