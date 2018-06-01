@@ -7,6 +7,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 // Add Angular material component imports here
@@ -18,7 +19,8 @@ const materialModules = [
   MatTabsModule,
   MatSidenavModule,
   MatCardModule,
-  MatListModule
+  MatListModule,
+  MatGridListModule
 
 ];
 @NgModule({

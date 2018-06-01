@@ -1,1 +1,35 @@
 
+.container {
+  height: 201px;
+}
+
+.lastContainer {
+  height: 200px;
+}
+.item-1 {
+  background-color: purple;
+  width: 25%;
+  height: 200px;
+}
+.arrow {
+  left: 50px;
+}
+
+.item-2 {
+  background-color: cornflowerblue;
+  width: 25%;
+  height: 200px;
+}
+
+.item-3 {
+  background-color: purple;
+  width: 25%;
+  height: 200px;
+}
+.item-4 {
+  background-color: green;
+  width: 25%;
+  height: 200px;
+}
+
+
