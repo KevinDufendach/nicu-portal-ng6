@@ -7,7 +7,7 @@ export const epicSmartAuthConfig: AuthConfig = {
   // https://manfredsteyer.github.io/angular-oauth2-oidc/docs/
   //         additional-documentation/configure-library-for-implicit-flow-without-discovery-document.html
   // Url of the Identity Provider
-  // issuer: 'https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/',
+  issuer: 'https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/',
 
   // Login-Url
   loginUrl: 'https://open-ic.epic.com/Argonaut/oauth2/authorize',

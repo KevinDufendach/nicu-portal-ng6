@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {EpicAuthService} from '../smart-auth/epic-auth.service';
+import Patient = fhir.Patient;
+import {Observable} from 'rxjs';
+import {FhirService} from '../fhir/fhir.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,29 +10,20 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  token: string;
-  claims: object;
-  scopes: object;
-  header: string;
-  ptId: object;
+  patient: Patient;
 
-  constructor(public epicAuthService: EpicAuthService) {
+  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
   }
 
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
-        this.token = this.epicAuthService.oauthService.getAccessToken();
-        this.claims = this.epicAuthService.oauthService.getIdentityClaims();
-        this.scopes = this.epicAuthService.oauthService.getGrantedScopes();
-        this.epicAuthService.oauthService.getAuthorizationHeader().then(
-          h => {
-            this.header = h;
-          }
-        );
-
-        this.ptId = this.epicAuthService.oauthService.getAdditionalParameters();
+        this.getPatient().subscribe(pt => this.patient = pt);
       }
     );
+  }
+
+  getPatient(): Observable<Patient> {
+    return this.fhirService.getPatient();
   }
 
   logOut() {

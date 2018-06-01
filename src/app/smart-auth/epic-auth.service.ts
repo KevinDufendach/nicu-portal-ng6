@@ -7,6 +7,7 @@ import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/
   providedIn: 'root'
 })
 export class EpicAuthService {
+  serviceUri: '';
 
   constructor(public oauthService: OAuthService) {
     this.configureWithNewConfigApi();
@@ -16,11 +17,14 @@ export class EpicAuthService {
     this.oauthService.initAuthorizationCodeFlow();
   }
 
+  getServiceUri(): string {
+    return this.serviceUri;
+  }
+
   completeLoginWithCode(): Promise<void> {
     // check if already logged in with valid access token
     if (!this.oauthService.hasValidAccessToken()) {
-      return this.oauthService.tryLogin()
-        .then(_ => console.log(this.oauthService.getAccessToken()));
+      return this.oauthService.tryLogin();
     }
 
     // if already logged in
