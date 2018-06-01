@@ -11,6 +11,7 @@ export class LandingComponent implements OnInit {
   claims: object;
   scopes: object;
   header: string;
+  ptId: object;
 
   constructor(public epicAuthService: EpicAuthService) {
   }
@@ -25,6 +26,8 @@ export class LandingComponent implements OnInit {
             this.header = h;
           }
         );
+
+        this.ptId = this.epicAuthService.oauthService.getAdditionalParameters();
       }
     );
   }

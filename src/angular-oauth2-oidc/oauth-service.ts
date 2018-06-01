@@ -1691,8 +1691,12 @@ export class OAuthService extends AuthConfig {
     }
   }
 
+  /**
+   * Store additional parameters received in the tokenResponse
+   * @param tokenResponse the parameters from the token post request
+   */
   private storeAdditionalParameters(tokenResponse) {
-    const additionalParams = {};
+    const additionalParams = JSON.parse(this._storage.getItem('additional_params')) || {};
 
     const tokenKeys = ['access_token', 'refresh_token', 'expires_in', 'scope'];
     Object.keys(tokenResponse).forEach(key => {
