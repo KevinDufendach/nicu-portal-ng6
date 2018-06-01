@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {MaterialImportsModule} from './material-imports/material-imports.module';
 import {LandingComponent} from './landing/landing.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-<<<<<<< HEAD
+
 import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {JourneyMapComponent} from './journey-map/journey-map.component';
 import {LearningComponent} from './learning/learning.component';
@@ -15,14 +15,14 @@ import {NicViewComponent} from './nic-view/nic-view.component';
 import {StartComponent} from './start/start.component';
 import {SmartAuthModule} from './smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
-=======
+
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { JourneyMapComponent } from './journey-map/journey-map.component';
 import { LearningComponent } from './learning/learning.component';
 import { CareTeamComponent } from './care-team/care-team.component';
 import { NicViewComponent } from './nic-view/nic-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
->>>>>>> journeymap
+
 
 @NgModule({
   declarations: [
@@ -42,11 +42,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     SmartAuthModule,
     MaterialImportsModule,
-<<<<<<< HEAD
-=======
     BrowserAnimationsModule,
-    FlexLayoutModule
->>>>>>> journeymap
   ],
   providers: [],
   bootstrap: [AppComponent]
