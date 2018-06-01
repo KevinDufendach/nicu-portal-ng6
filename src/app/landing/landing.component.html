@@ -1,22 +1,21 @@
-
 <p>Text From Landing Component</p>
 
 <div *ngIf="epicAuthService.oauthService.hasValidAccessToken()">
   <div>
-    <h4>Patient</h4>
-    <textarea>{{patient | json}}</textarea>
+    <h4>Patient: <span *ngIf="patient">{{patient.name[0]?.given}}</span></h4>
   </div>
 
   <button mat-raised-button button (click)="getObservations('29463-7')">Get Observations</button>
   <div>
     <h4>Weight Observations</h4>
-    <textarea>{{observationList | json}}</textarea>
-    <textarea>{{weightList | json}}</textarea>
-
-    <!--<ul *ngFor="let obs of weightList">{{obs.div}}</ul>-->
+    <ul>
+      <li *ngFor="let wtQuantity of weightList">{{wtQuantity.value}} {{wtQuantity.unit}}</li>
+    </ul>
   </div>
 
   <button mat-button class="mat-warn" (click)="logOut()">Log out</button>
 </div>
 
-<button *ngIf="!epicAuthService.oauthService.hasValidAccessToken()" mat-button class="mat-primary" (click)="epicAuthService.login()">Log in</button>
+<button *ngIf="!epicAuthService.oauthService.hasValidAccessToken()" mat-button class="mat-primary"
+        (click)="epicAuthService.login()">Log in
+</button>

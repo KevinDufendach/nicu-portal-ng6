@@ -20,13 +20,15 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
-        this.getPatient().subscribe(pt => this.patient = pt);
+        this.getPatient();
       }
     );
   }
 
-  getPatient(): Observable<Patient> {
-    return this.fhirService.getPatient();
+  getPatient() {
+    this.fhirService.getPatient().subscribe( pt =>
+      this.patient = pt
+    );
   }
 
   getObservations(code) {
