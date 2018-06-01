@@ -11,6 +11,7 @@ import { JourneyMapComponent } from './journey-map/journey-map.component';
 import { LearningComponent } from './learning/learning.component';
 import { CareTeamComponent } from './care-team/care-team.component';
 import { NicViewComponent } from './nic-view/nic-view.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NicViewComponent } from './nic-view/nic-view.component';
     BrowserModule,
     AppRoutingModule,
     MaterialImportsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
