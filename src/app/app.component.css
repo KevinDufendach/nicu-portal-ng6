@@ -1,57 +1,57 @@
-.sidenav-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: black;
-}
-.mainToolbar{
-  position: relative;
-}
-.sidenav {
-  width: 200px;
-  box-shadow: 3px 0 6px rgba(0,0,0,.24);
-}
+/*.sidenav-container {*/
+  /*position: relative;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*background-color: white;*/
+/*}*/
+/*.mainToolbar{*/
+  /*position: relative;*/
+/*}*/
+/*.sidenav {*/
+  /*width: 200px;*/
+  /*box-shadow: 3px 0 6px rgba(0,0,0,.24);*/
+/*}*/
 
-.navButtons {
-  display: block;
-  min-width: 200px;
-}
+/*.navButtons {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.landingButton {
-  display: block;
-  min-width: 200px;
-}
+/*.landingButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.patientInfoButton {
-  display: block;
-  min-width: 200px;
-}
+/*.patientInfoButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.journeyMapButton {
-  display: block;
-  min-width: 200px;
-}
+/*.journeyMapButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.learningButton {
-  display: block;
-  min-width: 200px;
-}
+/*.learningButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.careTeamButton {
-  display: block;
-  min-width: 200px;
-}
+/*.careTeamButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.nicViewButton {
-  display: block;
-  min-width: 200px;
-}
+/*.nicViewButton {*/
+  /*display: block;*/
+  /*min-width: 200px;*/
+/*}*/
 
-.tab-actions{
-  display: inline-block;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
+/*.tab-actions{*/
+  /*display: inline-block;*/
+  /*position: fixed;*/
+  /*bottom: 20px;*/
+  /*right: 20px;*/
+/*}*/

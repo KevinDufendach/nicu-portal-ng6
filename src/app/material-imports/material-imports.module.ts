@@ -10,6 +10,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 
+
 // Add Angular material component imports here
 const materialModules = [
   MatToolbarModule,
@@ -20,8 +21,7 @@ const materialModules = [
   MatSidenavModule,
   MatCardModule,
   MatListModule,
-  MatGridListModule
-
+  MatGridListModule,
 ];
 @NgModule({
   imports: [materialModules],

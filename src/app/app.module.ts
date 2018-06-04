@@ -15,6 +15,7 @@ import {NicViewComponent} from './nic-view/nic-view.component';
 import {StartComponent} from './start/start.component';
 import {SmartAuthModule} from './smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {HttpClientModule} from '@angular/common/http';
     SmartAuthModule,
     MaterialImportsModule,
     BrowserAnimationsModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
