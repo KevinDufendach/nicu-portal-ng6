@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {epicSmartAuthConfig} from './smart-config';
 import {OAuthService} from '../../angular-oauth2-oidc/oauth-service';
 import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/null-validation-handler';
+import {FhirApiEndpoint} from './fhir-api-endpoint';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/
 export class EpicAuthService {
   serviceUri: '';
 
-  constructor(public oauthService: OAuthService) {
+  constructor(public oauthService: OAuthService, private http: HttpClient) {
     this.configureWithNewConfigApi();
   }
 
@@ -19,6 +22,19 @@ export class EpicAuthService {
 
   getServiceUri(): string {
     return this.serviceUri;
+  }
+
+  getEndpoints(): Observable<FhirApiEndpoint[]> {
+    const endpointJsonUrl = 'https://open.epic.com/MyApps/EndpointsJson';
+
+    return new Observable<FhirApiEndpoint[]>(observer => {
+      this.http.get(endpointJsonUrl).subscribe(data => {
+        // const entries = data['Entries'];
+        console.log('retrieved endpoint data');
+        console.log(data);
+      });
+    });
+
   }
 
   completeLoginWithCode(): Promise<void> {
