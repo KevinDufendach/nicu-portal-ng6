@@ -12,7 +12,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="4" rowHeight="2:1" class="gridlist" *ngIf="!(isHandset$ | async)">
+  <mat-grid-list cols="4" rowHeight="2:1" class="gridlist" *ngIf="!(isHandset$ | async) ">
     <mat-grid-tile style="text-align: center;"
                    *ngFor="let tile of desktopTiles"
                    [colspan]="tile.cols"
@@ -23,6 +23,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
+
 
 
 

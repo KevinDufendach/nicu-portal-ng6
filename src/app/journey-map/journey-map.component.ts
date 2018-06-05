@@ -52,6 +52,7 @@ export class JourneyMapComponent implements OnInit {
       map(result => result.matches)
     );
 
+
   constructor(private breakpointObserver: BreakpointObserver) {
   }
 
