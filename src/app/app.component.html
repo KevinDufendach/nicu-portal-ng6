@@ -15,18 +15,32 @@
       <a mat-list-item href="/careteam">The Team</a>
       <a mat-list-item href="/nicview">NicView</a>
     </mat-nav-list>
-    <section class="tab-actions">
-      <button mat-fab color="warn" (click)="drawer.close()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </section>
+    <!--<section class="tab-actions">-->
+      <!--<button mat-fab color="warn" (click)="drawer.close()">-->
+        <!--<mat-icon>close</mat-icon>-->
+      <!--</button>-->
+    <!--</section>-->
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
-    <mat-toolbar>
-    <button mat-stroked-button color="primary" (click)="drawer.open()">Open The Sidenav</button>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>My NICU Journey</span>
     </mat-toolbar>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
+
+  <!--<mat-sidenav-content>-->
+    <!--<mat-toolbar>-->
+    <!--<button mat-stroked-button color="primary" (click)="drawer.open()">Open The Sidenav</button>-->
+    <!--</mat-toolbar>-->
+  <!--</mat-sidenav-content>-->
 </mat-sidenav-container>
 
 
