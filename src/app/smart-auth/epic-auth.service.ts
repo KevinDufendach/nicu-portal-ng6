@@ -25,16 +25,9 @@ export class EpicAuthService {
   }
 
   getEndpoints(): Observable<FhirApiEndpoint[]> {
-    const endpointJsonUrl = 'https://open.epic.com/MyApps/EndpointsJson';
+    const endpointJsonUrl = '/assets/EndpointsJson.json';
 
-    return new Observable<FhirApiEndpoint[]>(observer => {
-      this.http.get(endpointJsonUrl).subscribe(data => {
-        // const entries = data['Entries'];
-        console.log('retrieved endpoint data');
-        console.log(data);
-      });
-    });
-
+    return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
   completeLoginWithCode(): Promise<void> {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EpicAuthService} from '../smart-auth/epic-auth.service';
+import {FhirApiEndpoint} from '../smart-auth/fhir-api-endpoint';
 
 @Component({
   selector: 'app-start',
@@ -7,10 +8,15 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
   styleUrls: ['./start.component.css']
 })
 export class StartComponent implements OnInit {
+  endpoints: FhirApiEndpoint[];
 
-  constructor(private epicAuthService: EpicAuthService) { }
+  constructor(public epicAuthService: EpicAuthService) { }
 
   ngOnInit() {
+  }
+
+  getEndpoints(): void {
+    this.epicAuthService.getEndpoints().subscribe(endpoints => this.endpoints = endpoints);
   }
 
   login(): void {
