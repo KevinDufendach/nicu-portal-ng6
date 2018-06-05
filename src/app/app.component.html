@@ -14,6 +14,8 @@
       <a mat-list-item href="/learning">Learning</a>
       <a mat-list-item href="/careteam">The Team</a>
       <a mat-list-item href="/nicview">NicView</a>
+      <a mat-list-item href="/caringbridge">Caring Bridge</a>
+
     </mat-nav-list>
     <section class="tab-actions">
       <button mat-fab color="warn" (click)="drawer.close()">
@@ -21,10 +23,11 @@
       </button>
     </section>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content >
     <router-outlet></router-outlet>
     <mat-toolbar>
-    <button mat-stroked-button color="primary" (click)="drawer.open()">Open The Sidenav</button>
+      <button mat-stroked-button color="primary" (click)="drawer.open()" *ngIf="isHandset$ | async">Open The Sidenav
+      </button>
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>

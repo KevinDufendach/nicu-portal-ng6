@@ -16,6 +16,9 @@ import {StartComponent} from './start/start.component';
 import {SmartAuthModule} from './smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
+import { IframetestComponent } from './iframetest/iframetest.component';
+import { FlexlayouttestComponent } from './flexlayouttest/flexlayouttest.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -28,9 +31,12 @@ import { LayoutModule } from '@angular/cdk/layout';
     CareTeamComponent,
     NicViewComponent,
     StartComponent,
+    IframetestComponent,
+    FlexlayouttestComponent,
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
