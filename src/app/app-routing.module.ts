@@ -7,6 +7,9 @@ import {CareTeamComponent} from './care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
 import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {StartComponent} from './start/start.component';
+import { IframetestComponent } from './iframetest/iframetest.component';
+import {FlexlayouttestComponent} from './flexlayouttest/flexlayouttest.component';
+
 
 const routes = [
   {path: 'landing', component: LandingComponent},
@@ -16,6 +19,10 @@ const routes = [
   {path: 'careteam', component: CareTeamComponent},
   {path: 'nicview', component: NicViewComponent},
   {path: 'start', component: StartComponent},
+  {path: 'caringbridge', component: IframetestComponent},
+  {path: 'gridtest', component: FlexlayouttestComponent},
+
+
   {path: '', redirectTo: 'start', pathMatch: 'full'},
 ];
 

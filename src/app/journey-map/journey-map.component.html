@@ -1,11 +1,29 @@
-<mat-grid-list cols="4" rowHeight="150px" class="gridlist">
-  <mat-grid-tile style="text-align: center;"
-                 *ngFor="let tile of tiles"
-                 [colspan]="tile.cols"
-                 [rowspan]="tile.rows"
-                 [style.background]="tile.color">
-    <p style="color: black;">{{tile.text}}</p>
-    <mat-icon>{{tile.icon}}</mat-icon>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card class="sub-category-grid" style="padding:0px;">
+<!--<mat-card class="sub-category-grid" style="padding:0px;" (window:resize)="onResize($event)">-->
+
+  <mat-grid-list cols="1" rowHeight="3:1" class="gridlist" *ngIf="isHandset$ | async ">
+    <mat-grid-tile style="text-align: center;"
+                   *ngFor="let tile of handsetTiles"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+                   [style.background]="tile.color">
+      <p style="color: black;">{{tile.text}} ON A HANDSET</p>
+      <mat-icon>{{tile.icon}}</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="2:1" class="gridlist" *ngIf="!(isHandset$ | async) ">
+    <mat-grid-tile style="text-align: center;"
+                   *ngFor="let tile of desktopTiles"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+                   [style.background]="tile.color">
+      <p style="color: black;">{{tile.text}}</p>
+      <mat-icon>{{tile.icon}}</mat-icon>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+
+
 
