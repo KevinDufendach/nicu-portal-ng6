@@ -1,2 +1,10 @@
 <h1>Get Logged In</h1>
+
+<button mat-raised-button (click)="getEndpoints()">Get endpoints</button>
+
 <button mat-raised-button (click)="login()">Log in with Epic</button>
+
+<ul>
+  <li *ngFor="let endpoint of endpoints">{{endpoint.OrganizationName}}</li>
+</ul>
+
