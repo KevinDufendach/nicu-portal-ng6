@@ -19,6 +19,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { IframetestComponent } from './iframetest/iframetest.component';
 import { FlexlayouttestComponent } from './flexlayouttest/flexlayouttest.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MaterialImportsModule,
     BrowserAnimationsModule,
     LayoutModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
