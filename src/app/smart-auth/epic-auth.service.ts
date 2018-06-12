@@ -49,6 +49,8 @@ export class EpicAuthService {
       // get auth config from URI
       const config: AuthConfig = Object.assign({}, baseSmartAuthConfig);
 
+      config.issuer = endpoint;
+
       this.getConfigMetadata(endpoint).subscribe((data: CapabilityStatement) => {
         try {
           for (const ext of data.rest[0].security.extension[0].extension) {
