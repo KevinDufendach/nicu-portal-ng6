@@ -555,7 +555,7 @@ export class OAuthService extends AuthConfig {
    * Starts the implicit flow and redirects to user to
    * the auth servers login url.
    *
-   * @param additionalState Optinal state that is passes around.
+   * @param additionalState Optional state that is passes around.
    *  You find this state in the property ``state`` after ``tryLogin`` logged in the user.
    * @param params Hash with additional parameter. If it is a string, it is used for the
    *               parameter loginHint (for the sake of compatibility with former versions)
@@ -1555,11 +1555,11 @@ export class OAuthService extends AuthConfig {
 
     const nonce = null;
     if (!this.disableNonceCheck) {
-      const nonce = this.createAndSaveNonce();
+      const new_nonce = this.createAndSaveNonce();
       if (state) {
-        state = nonce + this.config.nonceStateSeparator + state;
+        state = new_nonce + this.config.nonceStateSeparator + state;
       } else {
-        state = nonce;
+        state = new_nonce;
       }
     }
 
