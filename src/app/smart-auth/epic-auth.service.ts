@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {baseSmartAuthConfig, epicSmartAuthConfig} from './smart-config';
+import {baseSmartAuthConfig} from './smart-config';
 import {OAuthService} from '../../angular-oauth2-oidc/oauth-service';
 import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/null-validation-handler';
 import {FhirApiEndpoint} from './fhir-api-endpoint';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthConfig} from '../../angular-oauth2-oidc/auth.config';
 import CapabilityStatement = fhir.CapabilityStatement;
@@ -28,18 +28,21 @@ export class EpicAuthService {
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
+  getConfigMetadata(endpoint: string): Observable<CapabilityStatement> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+
+    return this.http.get<CapabilityStatement>(endpoint + 'metadata', {headers});
+  }
+
   generateAuthConfig(endpoint: string): Observable<AuthConfig> {
-    // const origEndpoint = 'https://boomertest.cchmc.org/fhir/api/FHIR/DSTU2/';
-    const origEndpoint = 'https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/';
-
-    endpoint = '/assets/open-epic-metadata.json';
-
     return new Observable<AuthConfig>(subscriber => {
       // get auth config from URI
       const config: AuthConfig = Object.assign({}, baseSmartAuthConfig);
 
-      this.http.get<CapabilityStatement>(endpoint).subscribe((data: CapabilityStatement) => {
-        config.issuer = origEndpoint; // TODO: When pulling from endpoint, remove this
+      this.getConfigMetadata(endpoint).subscribe((data: CapabilityStatement) => {
+      // this.http.get<CapabilityStatement>(endpoint).subscribe((data: CapabilityStatement) => {
+      //   config.issuer = origEndpoint; // TODO: When pulling from endpoint, remove this
 
         try {
 
