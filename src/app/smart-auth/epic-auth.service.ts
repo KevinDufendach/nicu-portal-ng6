@@ -13,9 +13,18 @@ import CapabilityStatement = fhir.CapabilityStatement;
 })
 export class EpicAuthService {
   constructor(public oauthService: OAuthService, private http: HttpClient) {
+    const storedConfig = this.checkStorageForConfiguration();
+    console.log(storedConfig);
+
+    if (storedConfig) {
+      this.configureWithNewConfigApi(storedConfig);
+    }
+
     // this.configureWithNewConfigApi(epicSmartAuthConfig);
 
     console.log('issuer: ' + this.oauthService.issuer);
+
+    console.log('state: ' + this.oauthService.state);
   }
 
   login(): void {
@@ -41,22 +50,14 @@ export class EpicAuthService {
       const config: AuthConfig = Object.assign({}, baseSmartAuthConfig);
 
       this.getConfigMetadata(endpoint).subscribe((data: CapabilityStatement) => {
-      // this.http.get<CapabilityStatement>(endpoint).subscribe((data: CapabilityStatement) => {
-      //   config.issuer = origEndpoint; // TODO: When pulling from endpoint, remove this
-
         try {
-
           for (const ext of data.rest[0].security.extension[0].extension) {
-            // console.log(ext);
-
             switch (ext.url) {
               case 'authorize':
                 config.loginUrl = ext.valueUri;
-                // console.log('loginUrl: ' + ext.valueUri);
                 break;
               case 'token':
                 config.tokenEndpoint = ext.valueUri;
-                // console.log('tokenUrl: ' + ext.valueUri);
                 break;
             }
           }
@@ -70,6 +71,8 @@ export class EpicAuthService {
   }
 
   completeLoginWithCode(): Promise<void> {
+    console.log('trying login with code');
+
     // check if already logged in with valid access token
     if (!this.oauthService.hasValidAccessToken()) {
       return this.oauthService.tryLogin();
@@ -81,12 +84,36 @@ export class EpicAuthService {
     });
   }
 
-  private configureWithNewConfigApi(config: AuthConfig) {
-    console.log('CONFIGURATION: ');
-    console.log(config);
+  private checkStorageForConfiguration(): AuthConfig | null {
+    const configString = sessionStorage.getItem('nicu-portal-config');
+    if (configString) {
+      const authConfig: AuthConfig = Object.assign({}, JSON.parse(configString));
+      return authConfig;
+    }
 
+    return null;
+  }
+
+  private storeConfiguraion(config: AuthConfig) {
+    sessionStorage.setItem('nicu-portal-config', JSON.stringify(config));
+  }
+
+  private configureWithNewConfigApi(config: AuthConfig) {
     this.oauthService.configure(config);
     this.oauthService.tokenValidationHandler = new NullValidationHandler();
     this.oauthService.setStorage(sessionStorage);
+
+    this.storeConfiguraion(config);
+  }
+
+  protected createNonce(): string {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 40; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
   }
 }
