@@ -27,9 +27,12 @@
     "@angular/service-worker": "^6.0.3",
     "@mdi/font": "^2.4.85",
     "@types/fhir": "0.0.30",
+    "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
+    "firebase": "^5.0.4",
     "hammerjs": "^2.0.8",
     "jsrsasign": "^8.0.12",
+    "ng2-charts": "^1.6.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

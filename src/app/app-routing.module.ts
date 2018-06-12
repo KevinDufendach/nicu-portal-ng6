@@ -9,6 +9,7 @@ import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {StartComponent} from './start/start.component';
 import { IframetestComponent } from './iframetest/iframetest.component';
 import {FlexlayouttestComponent} from './flexlayouttest/flexlayouttest.component';
+import {ChartsComponent} from './charts/charts.component';
 
 
 const routes = [
@@ -21,6 +22,7 @@ const routes = [
   {path: 'start', component: StartComponent},
   {path: 'caringbridge', component: IframetestComponent},
   {path: 'gridtest', component: FlexlayouttestComponent},
+  {path: 'chart', component: ChartsComponent},
 
 
   {path: '', redirectTo: 'start', pathMatch: 'full'},

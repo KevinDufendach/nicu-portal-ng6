@@ -7,6 +7,10 @@ import {MaterialImportsModule} from './material-imports/material-imports.module'
 import {LandingComponent} from './landing/landing.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+
 import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {JourneyMapComponent} from './journey-map/journey-map.component';
 import {LearningComponent} from './learning/learning.component';
@@ -21,6 +25,9 @@ import { FlexlayouttestComponent } from './flexlayouttest/flexlayouttest.compone
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PushNotificationPrefComponent } from './push-notification-pref/push-notification-pref.component';
+import {ChartsModule} from 'ng2-charts';
+import { ChartsComponent } from './charts/charts.component';
 
 
 @NgModule({
@@ -35,9 +42,12 @@ import { environment } from '../environments/environment';
     StartComponent,
     IframetestComponent,
     FlexlayouttestComponent,
+    PushNotificationPrefComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
@@ -46,6 +56,9 @@ import { environment } from '../environments/environment';
     MaterialImportsModule,
     BrowserAnimationsModule,
     LayoutModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
