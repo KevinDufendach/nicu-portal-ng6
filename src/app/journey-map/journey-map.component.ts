@@ -10,20 +10,20 @@ import {map} from 'rxjs/operators';
 })
 export class JourneyMapComponent implements OnInit {
   handsetTiles = [
-    {text: '', cols: 1, rows: 1, color: 'lightblue', icon: 'person'},
-    {text: 'Learn About the NICU', cols: 1, rows: 1, color: 'lightgreen', icon: ''},
-    {text: 'Understand my role in NICU', cols: 1, rows: 1, color: 'lightpink', icon: ''},
-    {text: 'Learn about my Child\'s disgnosis ', cols: 1, rows: 1, color: '#DDBDF1', icon: ''},
-    {text: 'Understand my Child\'s healthcare needs', cols: 1, rows: 1, color: 'lightblue', icon: ''},
-    {text: 'Learn about my Child\'s treatment', cols: 1, rows: 1, color: 'lightgreen', icon: ''},
-    {text: 'Practice caregiver skills', cols: 1, rows: 1, color: 'lightpink', icon: ''},
-    {text: 'Make a discharge plan', cols: 1, rows: 1, color: 'lightblue', icon: ''},
-    {text: 'Finish my learning', cols: 1, rows: 1, color: 'lightgreen', icon: ''},
-    {text: 'Prepare for home', cols: 1, rows: 1, color: 'lightpink', icon: ''},
-    {text: 'demonstrate my skills', cols: 1, rows: 1, color: 'lightblue', icon: ''},
-    {text: 'Fill my child\'s medicines at the pharmacy', cols: 1, rows: 1, color: 'lightgreen', icon: ''},
-    {text: 'schedule follow up appointments', cols: 1, rows: 1, color: 'lightpink', icon: ''},
-    {text: 'Learn who to call and when to call', cols: 1, rows: 1, color: 'lightblue', icon: ''},
+    {text: '', cols: 1, rows: 1, color: 'white', icon: 'person'},
+    {text: 'Learn About the NICU', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'Understand my role in NICU', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'Learn about my Child\'s disgnosis ', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'Understand my Child\'s healthcare needs', cols: 1, rows: 1, color: '#00AEC7', icon: ''},
+    {text: 'Learn about my Child\'s treatment', cols: 1, rows: 1, color: '#00AEC7', icon: ''},
+    {text: 'Practice caregiver skills', cols: 1, rows: 1, color: '#00AEC7', icon: ''},
+    {text: 'Make a discharge plan', cols: 1, rows: 1, color: '#00AEC7', icon: ''},
+    {text: 'Finish my learning', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'Prepare for home', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'demonstrate my skills', cols: 1, rows: 1, color: '#C6579A', icon: ''},
+    {text: 'Fill my child\'s medicines at the pharmacy', cols: 1, rows: 1, color: '#78BE20', icon: ''},
+    {text: 'schedule follow up appointments', cols: 1, rows: 1, color: '#78BE20', icon: ''},
+    {text: 'Learn who to call and when to call', cols: 1, rows: 1, color: '#78BE20', icon: ''},
   ];
 
   desktopTiles = [

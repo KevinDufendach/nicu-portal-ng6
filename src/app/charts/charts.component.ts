@@ -12,16 +12,11 @@ import Observation = fhir.Observation;
 export class ChartsComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
-  weightListValueOne;
-  weightListValueTwo;
-  weightListValueThree;
-  weightListValueFour;
   patient: Patient;
   observationList: Observation[] = [];
-  weightList: any[] = [];
 
-  public lineChartData: Array<any> = [
-    {data: [9, 9.5, 10.5, 11.7], label: 'Weights'},
+  lineChartData: Array<any> = [
+    {data: [], label: 'Weights'},
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: any = {
@@ -59,13 +54,9 @@ export class ChartsComponent implements OnInit {
     this.fhirService.getObservations('29463-7').subscribe(
       obs => {
         this.observationList.push(obs);
+        this.lineChartData.push(obs.valueQuantity.value);
 
-        this.weightList.push(obs.valueQuantity.value);
-        console.log(this.weightList);
       }
     );
-    console.log(this.weightList);
-    this.weightListValueOne = this.weightList[0];
-    console.log(this.weightListValueOne);
   }
 }
