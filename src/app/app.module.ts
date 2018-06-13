@@ -11,6 +11,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 
+import {ServiceWorkerModule} from '@angular/service-worker';
 import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {JourneyMapComponent} from './journey-map/journey-map.component';
 import {LearningComponent} from './learning/learning.component';
@@ -81,6 +82,7 @@ import { PatientDataComponent } from './patient-data/patient-data.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    ServiceWorkerModule.register('/firebase-messaging-sw.js')
   ],
   providers: [],
   bootstrap: [AppComponent]
