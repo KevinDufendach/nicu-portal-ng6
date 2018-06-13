@@ -11,7 +11,6 @@
         <div class="dashboard-card">
           <app-dashboard-card-toolbar [title]="'Growth Chart'"></app-dashboard-card-toolbar>
           <div class="dashboard-card-content">
-            <button mat-raised-button button (click)="getObservations('29463-7')">Get Observations</button>
             <h4>Weight Observations</h4>
             <ul>
               <li *ngFor="let wtQuantity of weightList">{{wtQuantity.value}} {{wtQuantity.unit}}</li>

@@ -28,6 +28,7 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
         this.getPatient();
+        this.getObservations('29463-7');
       }
     );
   }
