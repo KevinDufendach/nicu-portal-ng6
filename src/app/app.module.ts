@@ -46,6 +46,8 @@ if (!environment.firebaseConfig) {
     window.alert(bucketErrMsg);
   }
 }
+import { PatientDataComponent } from './patient-data/patient-data.component';
+
 
 
 @NgModule({
@@ -63,6 +65,7 @@ if (!environment.firebaseConfig) {
     PushNotificationPrefComponent,
     ChartsComponent,
     NotificationChatComponent,
+    PatientDataComponent,
   ],
   imports: [
     BrowserModule,

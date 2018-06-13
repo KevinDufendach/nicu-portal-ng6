@@ -1,10 +1,27 @@
-<h1>Get Logged In</h1>
-
-<button mat-raised-button (click)="getEndpoints()">Get endpoints</button>
-
-<button mat-raised-button (click)="login()">Log in with Epic</button>
-
-<ul>
-  <li *ngFor="let endpoint of endpoints">{{endpoint.OrganizationName}}</li>
-</ul>
-
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Log In</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-select
+        #endpointSelector
+        placeholder="Organization"
+        [(value)]="selectedEndpoint"
+        (selectionChange)="getEndpointConfig(endpointSelector.value)">
+        <mat-option *ngFor="let endpoint of endpoints" [value]="endpoint">
+          {{ endpoint.OrganizationName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="loading-area">
+      <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <p>Retrieving configuration</p>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button (click)="login()" class="mat-primary" [disabled]="!ready">Log In</button>
+  </mat-card-actions>
+</mat-card>

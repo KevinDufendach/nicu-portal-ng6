@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import {EpicAuthService} from './smart-auth/epic-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,6 @@ export class AppComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, public epicAuthService: EpicAuthService) {}
 
 }
