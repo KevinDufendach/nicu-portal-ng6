@@ -27,8 +27,16 @@ export class EpicAuthService {
     console.log('state: ' + this.oauthService.state);
   }
 
+  logout(): void {
+    this.oauthService.logOut();
+  }
+
   login(): void {
     this.oauthService.initAuthorizationCodeFlow();
+  }
+
+  isLoggedIn(): boolean {
+    return this.oauthService.hasValidAccessToken();
   }
 
   getEndpoints(): Observable<FhirApiEndpoint[]> {

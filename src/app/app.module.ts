@@ -28,6 +28,8 @@ import { environment } from '../environments/environment';
 import { PushNotificationPrefComponent } from './push-notification-pref/push-notification-pref.component';
 import {ChartsModule} from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
+import { PatientDataComponent } from './patient-data/patient-data.component';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { ChartsComponent } from './charts/charts.component';
     FlexlayouttestComponent,
     PushNotificationPrefComponent,
     ChartsComponent,
+    PatientDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,11 @@ import { ChartsComponent } from './charts/charts.component';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

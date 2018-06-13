@@ -9,7 +9,6 @@
 
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="/start">Login Page</a>
       <a mat-list-item href="/landing">Landing Page</a>
       <a mat-list-item href="/patientinfo">Patient Info</a>
       <a mat-list-item href="/journeymap">Journey Map</a>
@@ -19,13 +18,7 @@
       <a mat-list-item href="/caringbridge">Caring Bridge</a>
       <a mat-list-item href="/chart">Weight Chart</a>
 
-
     </mat-nav-list>
-    <!--<section class="tab-actions">-->
-      <!--<button mat-fab color="warn" (click)="drawer.close()">-->
-        <!--<mat-icon>close</mat-icon>-->
-      <!--</button>-->
-    <!--</section>-->
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" >
@@ -38,6 +31,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>My NICU Journey</span>
+      <span fxFlex></span>
+      <button mat-button *ngIf="epicAuthService.isLoggedIn()" (click)="epicAuthService.logout()">Log Out</button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
