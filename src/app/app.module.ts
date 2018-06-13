@@ -23,11 +23,29 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { IframetestComponent } from './iframetest/iframetest.component';
 import { FlexlayouttestComponent } from './flexlayouttest/flexlayouttest.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PushNotificationPrefComponent } from './push-notification-pref/push-notification-pref.component';
 import {ChartsModule} from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
+import { NotificationChatComponent } from './notification-chat/notification-chat.component';
+
+const configErrMsg = `You have not configured and imported the Firebase SDK.
+Make sure you go through the codelab setup instructions.`;
+
+const bucketErrMsg = `Your Firebase Storage bucket has not been enabled. Sorry
+about that. This is actually a Firebase bug that occurs rarely. Please go and
+re-generate the Firebase initialization snippet (step 4 of the codelab) and make
+sure the storageBucket attribute is not empty. You may also need to visit the
+Storage tab and paste the name of your bucket which is displayed there.`;
+
+
+if (!environment.firebaseConfig) {
+  if (!environment.firebaseConfig.apiKey) {
+    window.alert(configErrMsg);
+  } else if (environment.firebaseConfig.storageBucket === '') {
+    window.alert(bucketErrMsg);
+  }
+}
 
 
 @NgModule({
@@ -44,6 +62,7 @@ import { ChartsComponent } from './charts/charts.component';
     FlexlayouttestComponent,
     PushNotificationPrefComponent,
     ChartsComponent,
+    NotificationChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +78,6 @@ import { ChartsComponent } from './charts/charts.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

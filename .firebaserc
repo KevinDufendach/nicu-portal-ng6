@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "smart-fhir-sandbox"
+    "default": "smart-fhir-sandbox",
+    "pushTest": "push-notifications-test-16288"
   }
 }

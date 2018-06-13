@@ -1,18 +1,15 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'your-api-key',
-    authDomain: 'your-auth-domain',
-    databaseURL: 'your-db-url',
-    projectId: 'your-project-id',
-    storageBucket: 'your-storage-bucket',
-    messagingSenderId: 'your-messaging-sender-id'
+    apiKey: 'AIzaSyDCcRMP4Ek0eLLIZ5Ial18WMdLMMIebVek',
+    authDomain: 'push-notifications-test-16288.firebaseapp.com',
+    databaseURL: 'https://push-notifications-test-16288.firebaseio.com',
+    projectId: 'push-notifications-test-16288',
+    storageBucket: 'push-notifications-test-16288.appspot.com',
+    messagingSenderId: '24559889528',
   }
 };
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as

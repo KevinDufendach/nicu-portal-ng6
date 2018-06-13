@@ -10,6 +10,7 @@ import {StartComponent} from './start/start.component';
 import { IframetestComponent } from './iframetest/iframetest.component';
 import {FlexlayouttestComponent} from './flexlayouttest/flexlayouttest.component';
 import {ChartsComponent} from './charts/charts.component';
+import {NotificationChatComponent} from './notification-chat/notification-chat.component';
 
 
 const routes = [
@@ -23,6 +24,7 @@ const routes = [
   {path: 'caringbridge', component: IframetestComponent},
   {path: 'gridtest', component: FlexlayouttestComponent},
   {path: 'chart', component: ChartsComponent},
+  {path: 'notification', component: NotificationChatComponent},
 
 
   {path: '', redirectTo: 'start', pathMatch: 'full'},

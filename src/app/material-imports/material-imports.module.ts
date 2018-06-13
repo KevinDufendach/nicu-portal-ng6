@@ -8,6 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material';
 
 
 
@@ -22,6 +23,7 @@ const materialModules = [
   MatCardModule,
   MatListModule,
   MatGridListModule,
+  MatSnackBarModule
 ];
 @NgModule({
   imports: [materialModules],
