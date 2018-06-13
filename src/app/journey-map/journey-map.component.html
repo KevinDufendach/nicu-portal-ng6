@@ -7,7 +7,7 @@
                    [colspan]="tile.cols"
                    [rowspan]="tile.rows"
                    [style.background]="tile.color">
-      <p style="color: black;">{{tile.text}}</p>
+      <p style="color: white;">{{tile.text}}</p>
       <mat-icon>{{tile.icon}}</mat-icon>
     </mat-grid-tile>
   </mat-grid-list>
@@ -18,8 +18,9 @@
                    [colspan]="tile.cols"
                    [rowspan]="tile.rows"
                    [style.background]="tile.color">
-      <p style="color: black;">{{tile.text}}</p>
+      <p style="color: white;">{{tile.text}}</p>
       <mat-icon>{{tile.icon}}</mat-icon>
+      <img src="{{tile.img}}">
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
