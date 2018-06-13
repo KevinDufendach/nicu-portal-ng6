@@ -14,9 +14,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <h4>{{ selectedEndpoint?.FHIRPatientFacingURI }}</h4>
+    <div class="loading-area">
+      <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <p>Retrieving configuration</p>
+      </div>
+    </div>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-raised-button (click)="login()" class="mat-primary">Log In</button>
+    <button mat-raised-button (click)="login()" class="mat-primary" [disabled]="!ready">Log In</button>
   </mat-card-actions>
 </mat-card>

@@ -65,6 +65,8 @@ export class EpicAuthService {
           }
 
           this.configureWithNewConfigApi(config);
+          subscriber.next(config);
+          subscriber.complete();
         } catch (e) {
           console.log(e);
         }

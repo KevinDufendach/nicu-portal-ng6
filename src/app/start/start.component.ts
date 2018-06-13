@@ -13,6 +13,9 @@ export class StartComponent implements OnInit {
   selectedEndpoint: FhirApiEndpoint;
   endpointConfig: AuthConfig;
 
+  loading = false;
+  ready = false;
+
   constructor(public epicAuthService: EpicAuthService) { }
 
   ngOnInit() {
@@ -21,8 +24,15 @@ export class StartComponent implements OnInit {
 
   getEndpointConfig(endpoint: FhirApiEndpoint) {
     console.log('getting endpoint config for: ' + endpoint.FHIRPatientFacingURI);
+    this.loading = true;
+    this.ready = false;
 
-    this.epicAuthService.generateAuthConfig(endpoint.FHIRPatientFacingURI).subscribe(config => this.endpointConfig = config);
+    this.epicAuthService.generateAuthConfig(endpoint.FHIRPatientFacingURI).subscribe(config => {
+      console.log('configuration information retrieved');
+      this.endpointConfig = config;
+      this.loading = false;
+      this.ready = true;
+    });
   }
 
   login(): void {

@@ -8,7 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {MatFormFieldModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
 
 
 
@@ -24,7 +24,9 @@ const materialModules = [
   MatListModule,
   MatGridListModule,
   MatFormFieldModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
 ];
 @NgModule({
   imports: [materialModules],
