@@ -34,13 +34,7 @@
     "jsrsasign": "^8.0.12",
     "ng2-charts": "^1.6.0",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26",
-    "@google-cloud/language": "^1.2.0",
-    "@google-cloud/storage": "^1.7.0",
-    "@google-cloud/vision": "^0.19.0",
-    "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.0.4",
-    "child-process-promise": "^2.2.1"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.6",

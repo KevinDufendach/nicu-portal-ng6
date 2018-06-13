@@ -3,6 +3,9 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
 import {FhirService} from '../fhir/fhir.service';
 import Observation = fhir.Observation;
+import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +17,12 @@ export class LandingComponent implements OnInit {
   observationList: Observation[] = [];
   weightList: any[] = [];
 
-  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+
+  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService, private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit() {
