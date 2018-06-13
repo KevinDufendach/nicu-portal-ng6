@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "smart-fhir-sandbox",
-    "pushTest": "push-notifications-test-16288"
+    "default": "nicu-portal",
+    "staging": "nicu-portal-staging"
   }
 }
