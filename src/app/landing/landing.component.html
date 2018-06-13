@@ -1,62 +1,31 @@
 <div *ngIf="epicAuthService.oauthService.hasValidAccessToken(); else loginBlock">
-  <div class="grid-container">
-    <mat-card class="dashboard-card">
-      <mat-card-header>
-        <mat-card-title>
-          Patient Information
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item>Expand</button>
-            <button mat-menu-item>Remove</button>
-          </mat-menu>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="dashboard-card-content">
-        <app-patient-data [patient]="patient"></app-patient-data>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="dashboard-card">
-      <mat-card-header>
-        <mat-card-title>
-          Journey Map
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item>Expand</button>
-            <button mat-menu-item>Remove</button>
-          </mat-menu>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="dashboard-card-content">
-        <app-journey-map></app-journey-map>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="dashboard-card">
-      <mat-card-header>
-        <mat-card-title>
-          Growth Chart
-          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item>Expand</button>
-            <button mat-menu-item>Remove</button>
-          </mat-menu>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="dashboard-card-content">
-        <button mat-raised-button button (click)="getObservations('29463-7')">Get Observations</button>
-        <h4>Weight Observations</h4>
-        <ul>
-          <li *ngFor="let wtQuantity of weightList">{{wtQuantity.value}} {{wtQuantity.unit}}</li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
+  <div class="dashboard">
+    <div fxLayout.gt-sm="row" fxLayout="column" fxFlex>
+      <div fxFlex>
+        <div class="dashboard-card">
+          <app-dashboard-card-toolbar [title]="'Patient Information'"></app-dashboard-card-toolbar>
+          <div class="dashboard-card-content">
+            <app-patient-data [patient]="patient"></app-patient-data>
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <app-dashboard-card-toolbar [title]="'Growth Chart'"></app-dashboard-card-toolbar>
+          <div class="dashboard-card-content">
+            <button mat-raised-button button (click)="getObservations('29463-7')">Get Observations</button>
+            <h4>Weight Observations</h4>
+            <ul>
+              <li *ngFor="let wtQuantity of weightList">{{wtQuantity.value}} {{wtQuantity.unit}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="dashboard-card" fxFlex>
+        <app-dashboard-card-toolbar [title]="'Journey Map'"></app-dashboard-card-toolbar>
+        <div class="dashboard-card-content">
+          <app-journey-map></app-journey-map>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

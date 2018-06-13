@@ -48,6 +48,7 @@ if (!environment.firebaseConfig) {
   }
 }
 import { PatientDataComponent } from './patient-data/patient-data.component';
+import { DashboardCardToolbarComponent } from './landing/dashboard-card-toolbar/dashboard-card-toolbar.component';
 
 
 
@@ -67,6 +68,7 @@ import { PatientDataComponent } from './patient-data/patient-data.component';
     ChartsComponent,
     NotificationChatComponent,
     PatientDataComponent,
+    DashboardCardToolbarComponent,
   ],
   imports: [
     BrowserModule,

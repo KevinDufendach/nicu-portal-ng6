@@ -1,23 +1,12 @@
-.pt-dashboard {
-  margin: auto;
-  max-width: 800px;
-}
-
-.grid-container {
+.dashboard {
   margin: 20px;
 }
 
 .dashboard-card {
-  /*position: relative;*/
-  margin: 20px;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 15px 10px;
 }
 
 .dashboard-card-content {
-  /*text-align: center;*/
+  padding: 15px;
 }
