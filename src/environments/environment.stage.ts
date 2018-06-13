@@ -1,6 +1,5 @@
 export const environment = {
   production: false,
-  'output-path': './dist/nicu-portal-stage/',
   firebaseConfig: {
     apiKey: 'AIzaSyDwoIYzawEDmVwEbke8h6b08zqrvCYRhWM',
     authDomain: 'nicu-portal-staging.firebaseapp.com',
