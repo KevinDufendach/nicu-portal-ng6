@@ -8,6 +8,7 @@
             <app-patient-data [patient]="patient"></app-patient-data>
           </div>
         </div>
+
         <div class="dashboard-card">
           <app-dashboard-card-toolbar [title]="'Growth Chart'"></app-dashboard-card-toolbar>
           <div class="dashboard-card-content">
@@ -17,7 +18,18 @@
             </ul>
           </div>
         </div>
+
+        <div class="dashboard-card">
+          <app-dashboard-card-toolbar [title]="'Growth Chart'"></app-dashboard-card-toolbar>
+          <div class="dashboard-card-content">
+            <h4>Medication List</h4>
+            <ul>
+              <li *ngFor="let med of medicationList">{{med.code.text}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
       <div class="dashboard-card" fxFlex>
         <app-dashboard-card-toolbar [title]="'Journey Map'"></app-dashboard-card-toolbar>
         <div class="dashboard-card-content">
