@@ -1,6 +1,4 @@
-<p>Text From Landing Component</p>
-
-<div *ngIf="epicAuthService.oauthService.hasValidAccessToken()">
+<div *ngIf="epicAuthService.oauthService.hasValidAccessToken(); else loginBlock">
   <div>
     <h4>Patient: <span *ngIf="patient">{{patient.name[0]?.given}}</span></h4>
   </div>
@@ -16,6 +14,6 @@
   <button mat-button class="mat-warn" (click)="logOut()">Log out</button>
 </div>
 
-<button *ngIf="!epicAuthService.oauthService.hasValidAccessToken()" mat-button class="mat-primary"
-        (click)="epicAuthService.login()">Log in
-</button>
+<ng-template #loginBlock>
+  <app-start></app-start>
+</ng-template>
