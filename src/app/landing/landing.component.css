@@ -3,22 +3,13 @@
   max-width: 800px;
 }
 
-.pt-dashboard mat-grid-tile {
-  margin: 20px;
-  /*padding: 20px;*/
-  background-color: #B3E7EE;
-}
-
 .grid-container {
   margin: 20px;
 }
 
 .dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  /*position: relative;*/
+  margin: 20px;
 }
 
 .more-button {
