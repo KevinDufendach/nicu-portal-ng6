@@ -6,5 +6,8 @@ export interface JourneyMapGoal {
   svg_icon?: string;
   goal_group?: number;
   completed?: boolean;
-  id?: string;
+  id?: number;
+  cols: number;
+  rows: number;
+  color?: string;
 }
