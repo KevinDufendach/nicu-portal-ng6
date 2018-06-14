@@ -30,6 +30,7 @@
   width: 25%;
   height: 200px;
 }
+
 .item-4 {
   background-color: green;
   width: 25%;
@@ -40,9 +41,19 @@
   position: center;
 }
 
-a:link { text-decoration: none; }
-a:visited {text-decoration: none; }
-a:hover { text-decoration: underline; text-decoration-color: white;}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+}
+
 .tile-img {
   width: 100%;
   height: auto;
@@ -58,6 +69,10 @@ a:hover { text-decoration: underline; text-decoration-color: white;}
   text-align: center;
   /*padding: 5px;*/
   /*margin: 5px;*/
+  color: white;
+}
+
+.journey-map-tile a {
   color: white;
 }
 
