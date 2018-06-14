@@ -7,8 +7,9 @@
                    [colspan]="tile.cols"
                    [rowspan]="tile.rows"
                    [style.background]="tile.color">
-      <p style="color: white;">{{tile.text}}</p>
+      <a routerLink="/journeymap/{{tile.id}}"><p style="color: white;">{{tile.text}}</p></a>
       <mat-icon>{{tile.icon}}</mat-icon>
+      <img src="{{tile.img}}">
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -18,13 +19,9 @@
                    [colspan]="tile.cols"
                    [rowspan]="tile.rows"
                    [style.background]="tile.color">
-      <p style="color: white;">{{tile.text}}</p>
+      <a routerLink="/journeymap/{{tile.id}}"><p style="color: white;">{{tile.text}}</p></a>
       <mat-icon>{{tile.icon}}</mat-icon>
       <img src="{{tile.img}}">
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card>
-
-
-
-

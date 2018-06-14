@@ -11,12 +11,13 @@ import { IframetestComponent } from './iframetest/iframetest.component';
 import {FlexlayouttestComponent} from './flexlayouttest/flexlayouttest.component';
 import {ChartsComponent} from './charts/charts.component';
 import {NotificationChatComponent} from './notification-chat/notification-chat.component';
-
+import {JourneyMapDetailsComponent} from './journey-map-details/journey-map-details.component';
 
 const routes = [
   {path: 'landing', component: LandingComponent},
   {path: 'patientinfo', component: PatientInfoComponent},
   {path: 'journeymap', component: JourneyMapComponent},
+  {path: 'journeymap/:id', component: JourneyMapDetailsComponent},
   {path: 'learning', component: LearningComponent},
   {path: 'careteam', component: CareTeamComponent},
   {path: 'nicview', component: NicViewComponent},
