@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './journey-map-main.component.html',
   styleUrls: ['./journey-map-main.component.css']
 })
-export class JourneyMapMainComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class JourneyMapMainComponent {
 
 }

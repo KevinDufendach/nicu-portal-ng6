@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-journey-map',
   templateUrl: './journey-map.component.html',
-  styleUrls: ['./journey-map.component.css']
+  styleUrls: ['./journey-map.component.scss']
 })
 export class JourneyMapComponent implements OnInit {
   handsetTiles = [

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {LandingComponent} from './landing/landing.component';
-import {JourneyMapComponent} from './journey-map/journey-map.component';
 import {LearningComponent} from './learning/learning.component';
 import {CareTeamComponent} from './care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
@@ -11,12 +10,13 @@ import { IframetestComponent } from './iframetest/iframetest.component';
 import {FlexlayouttestComponent} from './flexlayouttest/flexlayouttest.component';
 import {ChartsComponent} from './charts/charts.component';
 import {NotificationChatComponent} from './notification-chat/notification-chat.component';
+import {JourneyMapMainComponent} from './journey-map-main/journey-map-main.component';
 
 
 const routes = [
   {path: 'dashboard', component: LandingComponent},
   {path: 'patientinfo', component: PatientInfoComponent},
-  {path: 'journeymap', component: JourneyMapComponent},
+  {path: 'journeymap', component: JourneyMapMainComponent},
   {path: 'learning', component: LearningComponent},
   {path: 'careteam', component: CareTeamComponent},
   {path: 'nicview', component: NicViewComponent},

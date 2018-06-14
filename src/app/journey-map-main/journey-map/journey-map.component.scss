@@ -1,7 +1,5 @@
-.sub-category-grid {
-  max-width: 800px;
-  margin: 10px auto 10px auto;
-}
+@import '~@angular/material/theming';
+@import '../../../custom-theme.scss';
 
 .container {
   height: 201px;
@@ -16,6 +14,7 @@
   width: 25%;
   height: 200px;
 }
+
 .arrow {
   left: 50px;
 }
@@ -57,4 +56,9 @@
   /*padding: 5px;*/
   /*margin: 5px;*/
   color: white;
+}
+
+// https://material.angular.io/guide/theming-your-components
+.mat-colors-test {
+  color: mat-color($mat-my-purple, 800);
 }

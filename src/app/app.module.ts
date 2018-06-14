@@ -13,7 +13,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {PatientInfoComponent} from './patient-info/patient-info.component';
-import {JourneyMapComponent} from './journey-map/journey-map.component';
+import {JourneyMapComponent} from './journey-map-main/journey-map/journey-map.component';
 import {LearningComponent} from './learning/learning.component';
 import {CareTeamComponent} from './care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
