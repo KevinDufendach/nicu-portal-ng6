@@ -13,7 +13,7 @@ export const baseSmartAuthConfig: AuthConfig = {
   // loginUrl: 'https://open-ic.epic.com/Argonaut/oauth2/authorize',
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/landing',
+  redirectUri: window.location.origin + '/dashboard',
 
   // The SPA's id. The SPA is registered with this id at the auth-server
   clientId: 'a0d973e2-baed-4808-ab27-03df890a33ce',

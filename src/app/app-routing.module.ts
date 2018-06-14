@@ -14,7 +14,7 @@ import {NotificationChatComponent} from './notification-chat/notification-chat.c
 import {JourneyMapDetailsComponent} from './journey-map-details/journey-map-details.component';
 
 const routes = [
-  {path: 'landing', component: LandingComponent},
+  {path: 'dashboard', component: LandingComponent},
   {path: 'patientinfo', component: PatientInfoComponent},
   {path: 'journeymap', component: JourneyMapComponent},
   {path: 'journeymap/:id', component: JourneyMapDetailsComponent},
@@ -28,7 +28,8 @@ const routes = [
   {path: 'notification', component: NotificationChatComponent},
 
 
-  {path: '', redirectTo: 'start', pathMatch: 'full'},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'landing', redirectTo: 'dashboard', pathMatch: 'full'},
 ];
 
 @NgModule({

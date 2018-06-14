@@ -6,6 +6,7 @@ import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import Observation = fhir.Observation;
 import Bundle = fhir.Bundle;
+import Medication = fhir.Medication;
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,31 @@ export class FhirService {
           for (const e of res.entry) {
             if (e.resource.resourceType === 'Observation') {
               observer.next(<Observation> e.resource);
+            }
+          }
+        }
+      );
+    }));
+  }
+
+  getMedications(): Observable<Medication> {
+    if (!this.isLoggedIn()) {
+      return throwError('no access token available to getObservations() in fhir.service');
+    }
+
+    const httpParams = new HttpParams()
+      .set('patient', this.getPatientId());
+      // .set('code', code);
+
+    return new Observable<Medication>((observer => {
+      this.http.get<Bundle>(
+        this.getIssuerUri() + 'Medication', {
+          params: httpParams,
+          headers: this.getHttpHeaders()
+        }).subscribe( res => {
+          for (const e of res.entry) {
+            if (e.resource.resourceType === 'Medication') {
+              observer.next(<Medication> e.resource);
             }
           }
         }

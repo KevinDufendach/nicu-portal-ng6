@@ -49,6 +49,8 @@ if (!environment.firebaseConfig) {
 }
 import { PatientDataComponent } from './patient-data/patient-data.component';
 import { JourneyMapDetailsComponent } from './journey-map-details/journey-map-details.component';
+import { DashboardCardToolbarComponent } from './landing/dashboard-card-toolbar/dashboard-card-toolbar.component';
+
 
 
 
@@ -69,6 +71,7 @@ import { JourneyMapDetailsComponent } from './journey-map-details/journey-map-de
     NotificationChatComponent,
     PatientDataComponent,
     JourneyMapDetailsComponent,
+    DashboardCardToolbarComponent,
   ],
   imports: [
     BrowserModule,

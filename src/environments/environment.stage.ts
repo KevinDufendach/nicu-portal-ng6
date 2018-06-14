@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   firebaseConfig: {
     apiKey: 'AIzaSyDwoIYzawEDmVwEbke8h6b08zqrvCYRhWM',
     authDomain: 'nicu-portal-staging.firebaseapp.com',

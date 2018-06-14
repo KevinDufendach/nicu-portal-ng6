@@ -47,18 +47,13 @@ export class JourneyMapComponent implements OnInit {
     {text: 'Fill my child\'s medicines at the pharmacy', cols: 1, rows: 2, color: '#78BE20', icon: '', id: 11},
     {text: 'schedule follow up appointments', cols: 1, rows: 2, color: '#78BE20', icon: '', id: 12},
     {text: 'Learn who to call and when to call', cols: 1, rows: 2, color: '#78BE20', icon: '', id: 13},
-
-
   ];
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
-
-
-  constructor(private breakpointObserver: BreakpointObserver, private heroService: JourneymapService) {
-  }
-
+  constructor(private breakpointObserver: BreakpointObserver, private heroService: JourneymapService) {}
   ngOnInit() {
     this.getHeroes();
   }

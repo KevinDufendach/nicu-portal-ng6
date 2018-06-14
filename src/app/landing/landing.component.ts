@@ -3,6 +3,7 @@ import {EpicAuthService} from '../smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
 import {FhirService} from '../fhir/fhir.service';
 import Observation = fhir.Observation;
+import Medication = fhir.Medication;
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
@@ -16,6 +17,7 @@ export class LandingComponent implements OnInit {
   patient: Patient;
   observationList: Observation[] = [];
   weightList: any[] = [];
+  medicationList: Medication[] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -28,6 +30,8 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
         this.getPatient();
+        this.getObservations('29463-7');
+        this.getMedications();
       }
     );
   }
@@ -44,6 +48,16 @@ export class LandingComponent implements OnInit {
         this.observationList.push(obs);
 
         this.weightList.push(obs.valueQuantity);
+      }
+    );
+  }
+
+  getMedications() {
+    this.fhirService.getMedications().subscribe(
+      med => {
+        this.medicationList.push(med);
+
+        // this.medicationList.push(obs.valueQuantity);
       }
     );
   }
