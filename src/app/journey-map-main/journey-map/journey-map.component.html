@@ -6,7 +6,7 @@
                  [colspan]="tile.cols"
                  [rowspan]="tile.rows"
                  [style.background]="tile.color">
-    <h3>{{tile.text}}</h3>
+    <a routerLink="/journeymap/{{tile.id}}"><h3>{{tile.text}}</h3></a>
     <img *ngIf="tile['img']" class="tile-img" src="{{tile['img']}}">
     <img *ngIf="tile['icon']" class="tile-icon" src="{{tile['icon']}}">
   </mat-grid-tile>
@@ -18,7 +18,7 @@
                  [colspan]="tile.cols"
                  [rowspan]="tile.rows"
                  [style.background]="tile.color">
-    <h5>{{tile.text}}</h5>
+    <a routerLink="/journeymap/{{tile.id}}"><h5>{{tile.text}}</h5></a>
     <img *ngIf="tile['img']" class="tile-img" src="{{tile['img']}}">
     <img *ngIf="tile['icon']" class="tile-icon" src="{{tile['icon']}}">
   </mat-grid-tile>

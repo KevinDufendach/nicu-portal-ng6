@@ -54,6 +54,7 @@ export class JourneyMapComponent implements OnInit {
       map(result => result.matches)
     );
   constructor(private breakpointObserver: BreakpointObserver, private heroService: JourneymapService) {}
+
   ngOnInit() {
     this.getHeroes();
   }
