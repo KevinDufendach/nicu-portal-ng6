@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
-
+import {JourneymapService} from './journeymap.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {PatientInfoComponent} from './patient-info/patient-info.component';
 import {JourneyMapComponent} from './journey-map-main/journey-map/journey-map.component';
@@ -48,8 +48,10 @@ if (!environment.firebaseConfig) {
   }
 }
 import { PatientDataComponent } from './patient-data/patient-data.component';
+import { JourneyMapDetailsComponent } from './journey-map-details/journey-map-details.component';
 import { DashboardCardToolbarComponent } from './landing/dashboard-card-toolbar/dashboard-card-toolbar.component';
 import { JourneyMapMainComponent } from './journey-map-main/journey-map-main.component';
+
 
 
 
@@ -69,6 +71,7 @@ import { JourneyMapMainComponent } from './journey-map-main/journey-map-main.com
     ChartsComponent,
     NotificationChatComponent,
     PatientDataComponent,
+    JourneyMapDetailsComponent,
     DashboardCardToolbarComponent,
     JourneyMapMainComponent,
   ],
@@ -88,7 +91,7 @@ import { JourneyMapMainComponent } from './journey-map-main/journey-map-main.com
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('/firebase-messaging-sw.js')
   ],
-  providers: [],
+  providers: [JourneymapService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

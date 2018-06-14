@@ -1,0 +1,31 @@
+<div class="sub-category-grid">
+  <!--<mat-card class="sub-category-grid" style="padding:0px;" (window:resize)="onResize($event)">-->
+
+  <mat-grid-list cols="1" rowHeight="3:1" class="gridlist" *ngIf="isHandset$ | async ">
+    <mat-grid-tile class="journey-map-tile"
+                   *ngFor="let tile of handsetTiles"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+                   [style.background]="tile.color">
+      <a routerLink="/journeymap/{{tile.id}}"><h5 style="color: white;">{{tile.text}}</h5></a>
+      <img *ngIf="tile['img']" class="tile-img" src="{{tile['img']}}">
+      <img *ngIf="tile['icon']" class="tile-icon" src="{{tile['icon']}}">
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="2:1" class="gridlist" *ngIf="!(isHandset$ | async) ">
+    <mat-grid-tile class="journey-map-tile"
+                   *ngFor="let tile of desktopTiles"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+                   [style.background]="tile.color">
+      <a routerLink="/journeymap/{{tile.id}}"><h5 style="color: white;">{{tile.text}}</h5></a>
+      <img *ngIf="tile['img']" class="tile-img" src="{{tile['img']}}">
+      <img *ngIf="tile['icon']" class="tile-icon" src="{{tile['icon']}}">
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+
+

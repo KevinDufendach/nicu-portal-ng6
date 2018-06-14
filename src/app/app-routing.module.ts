@@ -12,11 +12,13 @@ import {ChartsComponent} from './charts/charts.component';
 import {NotificationChatComponent} from './notification-chat/notification-chat.component';
 import {JourneyMapMainComponent} from './journey-map-main/journey-map-main.component';
 
+import {JourneyMapDetailsComponent} from './journey-map-details/journey-map-details.component';
 
 const routes = [
   {path: 'dashboard', component: LandingComponent},
   {path: 'patientinfo', component: PatientInfoComponent},
   {path: 'journeymap', component: JourneyMapMainComponent},
+  {path: 'journeymap/:id', component: JourneyMapDetailsComponent},
   {path: 'learning', component: LearningComponent},
   {path: 'careteam', component: CareTeamComponent},
   {path: 'nicview', component: NicViewComponent},
