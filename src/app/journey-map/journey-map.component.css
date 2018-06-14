@@ -1,12 +1,8 @@
 .sub-category-grid {
-  max-width: 1000px;
-  max-height: 1200px;
-  /*margin-left: auto;*/
-  /*margin-right: auto;*/
-  /*margin-top: 10px;*/
-  /*margin-bottom: 10px;*/
+  max-width: 800px;
   margin: 10px auto 10px auto;
 }
+
 .container {
   height: 201px;
 }
@@ -14,6 +10,7 @@
 .lastContainer {
   height: 200px;
 }
+
 .item-1 {
   background-color: purple;
   width: 25%;
@@ -42,4 +39,22 @@
 
 .gridlist {
   position: center;
+}
+
+.tile-img {
+  width: 100%;
+  height: auto;
+}
+
+.tile-icon {
+  height: 80%;
+  width: auto;
+}
+
+.journey-map-tile {
+  /*box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
+  text-align: center;
+  /*padding: 5px;*/
+  /*margin: 5px;*/
+  color: white;
 }
