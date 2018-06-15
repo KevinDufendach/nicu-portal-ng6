@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {JourneymapService} from '../journeymap.service';
 import {Hero} from './hero';
-import {JourneyMapGoal} from '../journey-map-main/journey-map-goal';
+import {JourneyMapGoal} from '../journey-map-goal';
 
 @Component({
   selector: 'app-journey-map-details',

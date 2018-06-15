@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {baseSmartAuthConfig} from './smart-config';
-import {OAuthService} from '../../angular-oauth2-oidc/oauth-service';
-import {NullValidationHandler} from '../../angular-oauth2-oidc/token-validation/null-validation-handler';
+import {OAuthService} from '../../../angular-oauth2-oidc/oauth-service';
+import {NullValidationHandler} from '../../../angular-oauth2-oidc/token-validation/null-validation-handler';
 import {FhirApiEndpoint} from './fhir-api-endpoint';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AuthConfig} from '../../angular-oauth2-oidc/auth.config';
+import {AuthConfig} from '../../../angular-oauth2-oidc/auth.config';
 import CapabilityStatement = fhir.CapabilityStatement;
 
 @Injectable({
@@ -40,7 +40,7 @@ export class EpicAuthService {
   }
 
   getEndpoints(): Observable<FhirApiEndpoint[]> {
-    const endpointJsonUrl = '/assets/EndpointsJson.json';
+    const endpointJsonUrl = '/assets/JSON-files/EndpointsJson.json';
 
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }

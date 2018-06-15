@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EpicAuthService} from '../smart-auth/epic-auth.service';
 import {FhirApiEndpoint} from '../smart-auth/fhir-api-endpoint';
-import {AuthConfig} from '../../angular-oauth2-oidc/auth.config';
+import {AuthConfig} from '../../../angular-oauth2-oidc/auth.config';
 
 @Component({
   selector: 'app-start',

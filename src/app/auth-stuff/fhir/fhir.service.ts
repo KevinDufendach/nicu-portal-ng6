@@ -1,4 +1,4 @@
-///<reference path="../../../node_modules/@types/fhir/index.d.ts"/>
+///<reference path="../../../../node_modules/@types/fhir/index.d.ts"/>
 import { Injectable } from '@angular/core';
 import {EpicAuthService} from '../smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
