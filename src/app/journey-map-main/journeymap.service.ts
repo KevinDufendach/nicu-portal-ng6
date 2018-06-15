@@ -18,6 +18,7 @@ export class JourneymapService {
   }
   getHero(id: number): Observable<Hero> {
     // TODO: send the message _after_ fetching the hero
+    console.log(HEROES.find(hero => hero.id === id));
     return of(HEROES.find(hero => hero.id === id));
   }
   getDesktopTileConfig(): Observable<JourneyMapGoal[]> {

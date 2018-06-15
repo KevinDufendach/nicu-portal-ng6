@@ -16,7 +16,7 @@ export class ChartsComponent implements OnInit {
   observationList: Observation[] = [];
 
   lineChartData: Array<any> = [
-    {data: [], label: 'Weights'},
+    {data: [1, 10, 20, 30, 40, 50], label: 'Weights'},
   ];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: any = {
