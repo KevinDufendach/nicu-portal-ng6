@@ -45,13 +45,6 @@ export class EpicAuthService {
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
-  getConfigMetadata(endpoint: string): Observable<CapabilityStatement> {
-    const headers = new HttpHeaders()
-      .set('content-type', 'application/json');
-
-    return this.http.get<CapabilityStatement>(endpoint + 'metadata', {headers});
-  }
-
   generateAuthConfig(endpoint: string): Observable<AuthConfig> {
     return new Observable<AuthConfig>(subscriber => {
       // get auth config from URI
@@ -80,6 +73,13 @@ export class EpicAuthService {
         }
       });
     });
+  }
+
+  private getConfigMetadata(endpoint: string): Observable<CapabilityStatement> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+
+    return this.http.get<CapabilityStatement>(endpoint + 'metadata', {headers});
   }
 
   completeLoginWithCode(): Promise<void> {
