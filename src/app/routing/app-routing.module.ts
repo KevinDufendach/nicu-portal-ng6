@@ -4,7 +4,7 @@ import {LandingComponent} from '../landing/landing.component';
 import {LearningComponent} from '../learning-main/learning/learning.component';
 import {NicViewComponent} from '../nic-view/nic-view.component';
 import {PatientInfoComponent} from '../testing-phase/patient-info/patient-info.component';
-import {StartComponent} from '../auth-stuff/start/start.component';
+import {StartComponent} from '../auth/start/start.component';
 import { IframetestComponent } from '../testing-phase/iframetest/iframetest.component';
 import {FlexlayouttestComponent} from '../testing-phase/flexlayouttest/flexlayouttest.component';
 import {ChartsComponent} from '../testing-phase/charts/charts.component';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {EpicAuthService} from '../auth-stuff/smart-auth/epic-auth.service';
+import {EpicAuthService} from '../auth/smart-auth/epic-auth.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/index';
 

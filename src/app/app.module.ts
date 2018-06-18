@@ -9,7 +9,7 @@ import {JourneyMapComponent} from './journey-map-main/journey-map/journey-map.co
 import {LearningComponent} from './learning-main/learning/learning.component';
 import {CareTeamComponent} from './care-team-main/care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
-import {StartComponent} from './auth-stuff/start/start.component';
+import {StartComponent} from './auth/start/start.component';
 import { IframetestComponent } from './testing-phase/iframetest/iframetest.component';
 import { FlexlayouttestComponent } from './testing-phase/flexlayouttest/flexlayouttest.component';
 import { PushNotificationPrefComponent } from './testing-phase/push-notification-pref/push-notification-pref.component';
@@ -23,7 +23,7 @@ import { LearningMainComponent } from './learning-main/learning-main.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ChartsComponent } from './testing-phase/charts/charts.component';
 
-import {SmartAuthModule} from './auth-stuff/smart-auth/smart-auth.module';
+import {SmartAuthModule} from './auth/smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
