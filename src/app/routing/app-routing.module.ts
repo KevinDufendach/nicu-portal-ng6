@@ -7,17 +7,23 @@ import {PatientInfoComponent} from '../testing-phase/patient-info/patient-info.c
 import {StartComponent} from '../auth-stuff/start/start.component';
 import { IframetestComponent } from '../testing-phase/iframetest/iframetest.component';
 import {FlexlayouttestComponent} from '../testing-phase/flexlayouttest/flexlayouttest.component';
-import {ChartsComponent} from '../testing-phase/charts/charts.component';
 import {NotificationChatComponent} from '../testing-phase/notification-chat/notification-chat.component';
 import {JourneyMapMainComponent} from '../journey-map-main/journey-map-main.component';
 
 import {JourneyMapDetailsComponent} from '../journey-map-main/journey-map-details/journey-map-details.component';
 import {CareTeamMainComponent} from '../care-team-main/care-team-main.component';
+import {ChartsmainComponent} from '../chartsmain/chartsmain.component';
 
 const routes = [
   {path: 'dashboard', component: LandingComponent},
   {path: 'patientinfo', component: PatientInfoComponent},
-  {path: 'journeymap', component: JourneyMapMainComponent},
+  {
+    path: 'journeymap', component: JourneyMapMainComponent,
+    // children: [
+    //   {path: '', redirectTo: 'journeymap', pathMatch: 'full'},
+    //   {path: 'journeymap/:id', component: JourneyMapDetailsComponent}
+    // ]
+  },
   {path: 'journeymap/:id', component: JourneyMapDetailsComponent},
   {path: 'learning', component: LearningComponent},
   {path: 'careteam', component: CareTeamMainComponent},
@@ -25,7 +31,7 @@ const routes = [
   {path: 'start', component: StartComponent},
   {path: 'caringbridge', component: IframetestComponent},
   {path: 'gridtest', component: FlexlayouttestComponent},
-  {path: 'chart', component: ChartsComponent},
+  {path: 'chart', component: ChartsmainComponent},
   {path: 'notification', component: NotificationChatComponent},
 
 

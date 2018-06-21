@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {JourneymapService} from '../journeymap.service';
 import {Hero} from './hero';
-import {JourneyMapGoal} from '../journey-map-goal';
+import {HEROES} from './mock-heroes';
+import {Observable} from 'rxjs/internal/Observable';
+import {of} from 'rxjs/internal/observable/of';
 
 @Component({
   selector: 'app-journey-map-details',
@@ -12,6 +14,8 @@ import {JourneyMapGoal} from '../journey-map-goal';
 })
 export class JourneyMapDetailsComponent implements OnInit {
   @Input() hero: Hero;
+  id: number;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: JourneymapService,
@@ -23,8 +27,8 @@ export class JourneyMapDetailsComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.heroService.getHero(this.id)
       .subscribe(hero => this.hero = hero);
   }
 
@@ -32,4 +36,7 @@ export class JourneyMapDetailsComponent implements OnInit {
     this.location.back();
   }
 
+   getHeroDetail(id: number): Observable<Hero> {
+    return of(HEROES[id]);
+  }
 }

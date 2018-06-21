@@ -21,7 +21,7 @@ import { JourneyMapMainComponent } from './journey-map-main/journey-map-main.com
 import { CareTeamMainComponent } from './care-team-main/care-team-main.component';
 import { LearningMainComponent } from './learning-main/learning-main.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { ChartsComponent } from './testing-phase/charts/charts.component';
+import { ChartsComponent } from './chartsmain/charts/charts.component';
 
 import {SmartAuthModule} from './auth-stuff/smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -38,6 +38,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 import {JourneymapService} from './journey-map-main/journeymap.service';
+import { ChartsmainComponent } from './chartsmain/chartsmain.component';
 
 
 
@@ -85,6 +86,7 @@ if (!environment.firebaseConfig) {
     CareTeamMainComponent,
     LearningMainComponent,
     SidenavComponent,
+    ChartsmainComponent,
   ],
   imports: [
     BrowserModule,
