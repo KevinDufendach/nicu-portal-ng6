@@ -1,7 +1,7 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
-import {EpicAuthService} from '../../auth-stuff/smart-auth/epic-auth.service';
+import {EpicAuthService} from '../../auth/smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
-import {FhirService} from '../../auth-stuff/fhir/fhir.service';
+import {FhirService} from '../../auth/fhir/fhir.service';
 import Observation = fhir.Observation;
 
 
