@@ -1,7 +1,7 @@
 <div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-  </div>
-  <button (click)="goBack()">go back</button>
+  <h2>{{ hero.name }}</h2>
+  <h2>{{ (getHeroDetail(id) | async).id }}</h2>
+  <p>{{ (getHeroDetail(id) | async).name }}</p>
+
+  <button mat-raised-button (click)="goBack()">go back</button>
 </div>
