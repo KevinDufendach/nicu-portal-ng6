@@ -71,6 +71,7 @@ export class ChartsComponent implements OnInit, AfterContentInit {
         this.getPatient();
       }
     );
+    this.getWeights();
   }
 
   ngAfterContentInit() {
