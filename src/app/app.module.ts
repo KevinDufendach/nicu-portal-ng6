@@ -39,6 +39,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import {JourneymapService} from './journey-map-main/journeymap.service';
 import { ChartsmainComponent } from './chartsmain/chartsmain.component';
+import { GrowthchartComponent } from './growthchart/growthchart.component';
 
 
 
@@ -87,6 +88,7 @@ if (!environment.firebaseConfig) {
     LearningMainComponent,
     SidenavComponent,
     ChartsmainComponent,
+    GrowthchartComponent,
   ],
   imports: [
     BrowserModule,

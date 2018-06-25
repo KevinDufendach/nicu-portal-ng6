@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ChartData} from './chartDef';
-import {ChartService} from './chart.service';
-import {BreakpointObserver} from '@angular/cdk/layout';
+// import {ChartData} from './chartDef';
+// import {ChartService} from './chart.service';
+// import {BreakpointObserver} from '@angular/cdk/layout';
+import {FhirService} from '../auth/fhir/fhir.service';
+import {EpicAuthService} from '../auth/smart-auth/epic-auth.service';
+import Patient = fhir.Patient;
+import Observation = fhir.Observation;
 
 @Component({
   selector: 'app-growthchart',
@@ -9,21 +13,15 @@ import {BreakpointObserver} from '@angular/cdk/layout';
   styleUrls: ['./growthchart.component.css']
 })
 export class GrowthchartComponent implements OnInit {
-  chartData: ChartData[];
-  // svgWidth;
-  // margin;
-  // width;
-  // height;
-  // svg;
-  // svgHeight;
-  // line;
-  //
-  // valueOne;
-  // valueTwo;
-  // valueThree;
-  // valueFour;
+  patient: Patient;
+  observationList: Observation[] = [];
+  weightList: any[] = [];
+  // chartData: ChartData[];
   lineChartData: Array<any> =
     [
+      {
+        data: [2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10], label: 'Your Child'
+      },
       {
         data:
           [
@@ -65,7 +63,8 @@ export class GrowthchartComponent implements OnInit {
             11.58520959,
             11.70137143,
             11.75978387,
-      ], label: '3rd Percentile'},
+          ], label: '3rd Percentile'
+      },
       {
         data:
           [
@@ -107,7 +106,8 @@ export class GrowthchartComponent implements OnInit {
             13.11723187,
             13.24720657,
             13.31277633,
-          ], label: 'Percentile 25'},
+          ], label: 'Percentile 25'
+      },
       {
         data:
           [
@@ -149,7 +149,8 @@ export class GrowthchartComponent implements OnInit {
             14.1150324,
             14.25779618,
             14.32994444,
-          ], label: 'Percentile 50'},
+          ], label: 'Percentile 50'
+      },
       {
         data:
           [
@@ -191,8 +192,9 @@ export class GrowthchartComponent implements OnInit {
             16.36611917,
             16.54940494,
             16.6423691,
-          ], label: 'Percentile 90'},
-  ];
+          ], label: 'Percentile 90'
+      },
+    ];
   public lineChartLabels: Array<any> =
     [
       0,
@@ -238,12 +240,19 @@ export class GrowthchartComponent implements OnInit {
     responsive: true,
     scales: {
       yAxes: [{
-        ticks: {
-        }
+        ticks: {}
       }]
     }
   };
   public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: '#00AEC7',
+      borderColor: '#E0457B',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
@@ -271,14 +280,55 @@ export class GrowthchartComponent implements OnInit {
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';
-  constructor(private breakpointObserver: BreakpointObserver, private chartService: ChartService) {}
+
+  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
+  }
 
   ngOnInit() {
-    this.getChartData();
+    this.epicAuthService.completeLoginWithCode().then(_ => {
+        this.getPatient();
+      }
+    );
+    this.getWeights();
   }
-  getChartData(): void {
-    this.chartService.getChartData()
-      .subscribe(chartData => this.chartData = chartData);
-    console.log('yo');
+
+  getPatient() {
+    this.fhirService.getPatient().subscribe(pt =>
+      this.patient = pt
+    );
+  }
+
+  getWeights() {
+    this.fhirService.getObservations('29463-7')
+      .subscribe(
+        obs => {
+          this.observationList.push(obs);
+          console.log(this.observationList[0]);
+        });
+    // getChartData(): void {
+    //   this.chartService.getChartData()
+    //     .subscribe(chartData => this.chartData = chartData);
+    //   console.log('yo');
+    // }
+  }
+  putWeightsInArray() {
+    for (let i = 0; i < this.observationList.length; i++) {
+      this.weightList.push(this.observationList[i].valueQuantity.value);
+    }
+    this.weightList.reverse();
+  }
+  public randomize(): void {
+    const _lineChartData: Array<any> = new Array(this.lineChartData.length);
+    for (let i = 0; i < this.lineChartData.length; i++) {
+      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+        _lineChartData[0] = this.weightList;
+        console.log(_lineChartData);
+      }
+    }
+    // this.lineChartLabels = this.lineChartLabels2;
+    // console.log(this.lineChartLabels2);
+    console.log(this.lineChartLabels);
+    this.lineChartData = _lineChartData[0];
   }
 }
