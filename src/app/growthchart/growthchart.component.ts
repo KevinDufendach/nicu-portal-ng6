@@ -323,7 +323,6 @@ export class GrowthchartComponent implements OnInit {
       _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
       for (let j = 0; j < this.lineChartData[i].data.length; j++) {
         _lineChartData[0] = this.weightList;
-        console.log(_lineChartData);
       }
     }
     // this.lineChartLabels = this.lineChartLabels2;
