@@ -3,14 +3,14 @@
     <div fxLayout.gt-sm="row" fxLayout="column" fxFlex>
       <div fxFlex>
         <div class="dashboard-card">
-          <app-dashboard-card-toolbar [title]="'Patient Information'"></app-dashboard-card-toolbar>
+          <app-dashboard-card-toolbar [title]="'Patient Information'" [link]="'/patientinfo'"></app-dashboard-card-toolbar>
           <div class="dashboard-card-content">
             <app-patient-data [patient]="patient"></app-patient-data>
           </div>
         </div>
 
         <div class="dashboard-card">
-          <app-dashboard-card-toolbar [title]="'Growth Chart'"></app-dashboard-card-toolbar>
+          <app-dashboard-card-toolbar [title]="'Growth Chart'" [link]="'/chart'"></app-dashboard-card-toolbar>
           <div class="dashboard-card-content">
             <h4>Weight Observations</h4>
             <ul>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="dashboard-card" fxFlex>
-        <app-dashboard-card-toolbar [title]="'Journey Map'"></app-dashboard-card-toolbar>
+        <app-dashboard-card-toolbar [title]="'Journey Map'" [link]="'/journeymap'"></app-dashboard-card-toolbar>
         <div class="dashboard-card-content">
           <app-journey-map></app-journey-map>
         </div>
