@@ -77,6 +77,18 @@ a:hover {
 }
 
 // https://material.angular.io/guide/theming-your-components
-.mat-colors-test {
-  color: mat-color($mat-my-purple, 800);
+.cchmc-purple {
+  color: mat-color($mat-my-purple, 700);
+}
+
+.cchmc-pink {
+  color: mat-color($mat-my-pink, 700);
+}
+
+.cchmc-teal {
+  color: mat-color($mat-my-teal, 700);
+}
+
+.cchmc-green {
+  color: mat-color($mat-my-green, 700);
 }

@@ -32,10 +32,12 @@ export class JourneyMapComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
+
   getDesktopTileConfig(): void {
     this.heroService.getDesktopTileConfig()
       .subscribe(desktopTileConfig => this.desktopTiles = desktopTileConfig);
   }
+
   getHandsetTileConfig(): void {
     this.heroService.getHandsetTileConfig()
       .subscribe(handsetTileConfig => this.handsetTiles = handsetTileConfig);
