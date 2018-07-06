@@ -17,6 +17,8 @@ export class PatientInfoComponent implements OnInit {
   hemoglobinList: any[] = [];
   bilirubinList: any[] = [];
   smokingString: any[] = [];
+  gestationalAge: any[] = [];
+
   constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
   }
 
@@ -58,6 +60,15 @@ export class PatientInfoComponent implements OnInit {
         this.bilirubinList.push(obs.valueQuantity);
       }
     );
+    // code for gestational age: 18185-9 - https://s.details.loinc.org/LOINC/18185-9.html
+    this.fhirService.getObservations('18185-9').subscribe(
+      obs => {
+        this.observationList.push(obs);
+
+        this.gestationalAge.push(obs.valueQuantity);
+      }
+    );
+
     /* code for current smoking history (cant get it to work)
      this.fhirService.getObservations('72166-2').subscribe(
       obs => {
