@@ -1,0 +1,23 @@
+<!--<button (click)="getWeights()" mat-raised-button>get weights</button>-->
+<button (click)="putWeightsInArray()" mat-raised-button>put weights in array</button>
+<button (click)="randomize()" mat-raised-button>Show your weights on the graph </button>
+
+<!--<button (click)="convert()" mat-raised-button>convert</button>-->
+
+<!--<button (click)="createLine()" mat-raised-button>create the line </button>-->
+
+<div class="chart">
+  <canvas baseChart width="400" height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+</div>
+
+<mat-card>
+  <p>Definition of percentile?</p>
+  <p>add a growth chart?</p>
+  <p>Calculation for your child percentile weight?</p>
+</mat-card>
