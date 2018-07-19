@@ -32,10 +32,12 @@ export class JourneyMapComponent implements OnInit {
     this.journeymap.getTiles()
       .subscribe(tileInfo => this.journeyTileInfo = tileInfo);
   }
+
   getDesktopTileConfig(): void {
     this.journeymap.getDesktopTileConfig()
       .subscribe(desktopTileConfig => this.desktopTiles = desktopTileConfig);
   }
+
   getHandsetTileConfig(): void {
     this.journeymap.getHandsetTileConfig()
       .subscribe(handsetTileConfig => this.handsetTiles = handsetTileConfig);

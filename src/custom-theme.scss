@@ -4,36 +4,59 @@
 
 @include mat-core();
 
-$custom-theme-primary: mat-palette($mat-my-teal, 500);
-$custom-theme-accent: mat-palette($mat-my-purple, 500);
-$custom-theme-warn: mat-palette($mat-red);
+$cchmc-dev-theme-primary: mat-palette($mat-my-teal, 500);
+$cchmc-dev-theme-accent: mat-palette($mat-my-purple, 500);
+$cchmc-dev-theme-warn: mat-palette($mat-red);
 
-$custom-theme: mat-light-theme(
-    $custom-theme-primary,
-    $custom-theme-accent,
-    $custom-theme-warn
+$cchmc-dev-theme: mat-light-theme(
+    $cchmc-dev-theme-primary,
+    $cchmc-dev-theme-accent,
+    $cchmc-dev-theme-warn
   );
 
-
-
-
   // theme colors
-  $custom-secondary-theme-primary: mat-palette($mat-pink, 700);
-  $custom-secondary-theme-accent: mat-palette($mat-green);
-  $custom-secondary-theme-warn: mat-palette($mat-red);
+  $open-epic-theme-primary: mat-palette($mat-pink, 600);
+  $open-epic-theme-accent: mat-palette($mat-green);
+  $open-epic-theme: mat-palette($mat-red);
 
-  $custom-secondary-theme: mat-light-theme(
-      $custom-secondary-theme-primary,
-      $custom-secondary-theme-accent,
-      $custom-secondary-theme-warn)
-    ;
+  $open-epic-theme: mat-light-theme(
+      $open-epic-theme-primary,
+      $open-epic-theme-accent,
+      $open-epic-theme
+  );
+
+$uc-dev-theme-primary: mat-palette($mat-red, 600);
+$uc-dev-theme-accent: mat-palette($mat-grey, 700);
+$uc-dev-theme-warn: mat-palette($mat-grey, 200);
+
+$uc-dev-theme: mat-light-theme(
+    $uc-dev-theme-primary,
+    $uc-dev-theme-accent,
+    $uc-dev-theme-warn);
+
+$smart-test-theme-primary: mat-palette($mat-yellow, 700);
+$smart-test-theme-accent: mat-palette($mat-blue, 600);
+$smart-test-theme-warn: mat-palette($mat-orange, 700);
+
+$smart-test-theme: mat-light-theme(
+    $smart-test-theme-primary,
+    $smart-test-theme-accent,
+    $smart-test-theme-warn);
 
   // create theme from palettes
 
-.custom-theme {
-  @include angular-material-theme($custom-theme)
+.cchmc-dev-theme{
+  @include angular-material-theme($cchmc-dev-theme)
 }
 
-.custom-secondary-theme {
-  @include angular-material-theme($custom-secondary-theme)
+.open-epic-theme {
+  @include angular-material-theme($open-epic-theme)
+}
+
+.uc-dev-theme {
+  @include angular-material-theme($uc-dev-theme)
+}
+
+.smart-test-theme {
+  @include angular-material-theme($smart-test-theme)
 }

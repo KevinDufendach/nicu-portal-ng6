@@ -21,7 +21,7 @@ export class SidenavComponent implements OnInit, DoCheck {
     );
 
   constructor(private themeservice: ThemeService, private overlayContainer: OverlayContainer, private breakpointObserver: BreakpointObserver, public epicAuthService: EpicAuthService) {
-      overlayContainer.getContainerElement().classList.add('custom-theme');
+      overlayContainer.getContainerElement().classList.add('cchmc-dev-theme');
   }
 
   ngOnInit() {
@@ -38,10 +38,16 @@ export class SidenavComponent implements OnInit, DoCheck {
     // I have a notepad version with all of the if statements and theme names i want to use but I didnt want to add that yet
     // because it is about 100+ if statements
     if (this.message === 'CCHMC Dev Server') {
-      this.theme = 'custom-theme';
+      this.theme = 'cchmc-dev-theme';
     }
     if (this.message === 'Open.Epic Argonaut Profile') {
-      this.theme = 'custom-secondary-theme';
+      this.theme = 'open-epic-theme';
+    }
+    if (this.message === 'UC Dev Server') {
+      this.theme = 'uc-dev-theme';
+    }
+    if (this.message === 'SMART Test Server') {
+      this.theme = 'smart-test-theme';
     }
   }
   // Stores the string value of the theme under the key selectedTheme in the local storage

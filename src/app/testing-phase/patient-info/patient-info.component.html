@@ -51,6 +51,14 @@
           </ul>
         </div>
       </mat-tab>
+      <mat-tab label="Gestational Age">
+        <div>
+          <h4>Gestational Age</h4>
+          <ul>
+            <li *ngFor="let gestAge of gestationalAge">{{gestAge}}</li>
+          </ul>
+        </div>
+      </mat-tab>
     </mat-tab-group>
   </mat-card-content>
 </mat-card>
