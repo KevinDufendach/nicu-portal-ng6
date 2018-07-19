@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-learning-main',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearningMainComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private meta: Meta) { }
   ngOnInit() {
-  }
+    this.meta.addTag({ name: 'description', content: 'Where you will learn all about different aspects of the NICU and your child\'s journey' });
 
+  }
 }

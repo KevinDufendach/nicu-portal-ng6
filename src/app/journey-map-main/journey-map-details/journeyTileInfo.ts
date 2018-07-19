@@ -1,6 +1,6 @@
-import { Hero } from './hero';
+import { JourneyTile } from './tileClass';
 
-export const HEROES: Hero[] = [
+export const journeyTileInfo: JourneyTile[] = [
   { id: 1, name: 'Learn About The Nicu' },
   { id: 2, name: 'Understand my role in NICU' },
   { id: 3, name: 'Learn about my child\'s diagnosis' },

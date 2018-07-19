@@ -3,10 +3,10 @@ import {EpicAuthService} from '../auth/smart-auth/epic-auth.service';
 import Patient = fhir.Patient;
 import {FhirService} from '../auth/fhir/fhir.service';
 import Observation = fhir.Observation;
-import Medication = fhir.Medication;
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing',
@@ -17,21 +17,22 @@ export class LandingComponent implements OnInit {
   patient: Patient;
   observationList: Observation[] = [];
   weightList: any[] = [];
-  medicationList: Medication[] = [];
+  // medicationList: Medication[] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService, private breakpointObserver: BreakpointObserver) {
+  constructor(private meta: Meta, public epicAuthService: EpicAuthService, public fhirService: FhirService, private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
         this.getPatient();
         this.getObservations('29463-7');
-        this.getMedications();
+        // this.getMedications();
+        this.meta.addTag({ name: 'description', content: 'Contains your child\'s dashboard which is our main landing page' });
       }
     );
   }
@@ -52,15 +53,14 @@ export class LandingComponent implements OnInit {
     );
   }
 
-  getMedications() {
-    this.fhirService.getMedications().subscribe(
-      med => {
-        this.medicationList.push(med);
-
-        // this.medicationList.push(obs.valueQuantity);
-      }
-    );
-  }
+  // getMedications() {
+  //   this.fhirService.getMedications().subscribe(
+  //     med => {
+  //       this.medicationList.push(med);
+  //
+  //     }
+  //   );
+  // }
 
   logOut() {
     this.epicAuthService.oauthService.logOut();

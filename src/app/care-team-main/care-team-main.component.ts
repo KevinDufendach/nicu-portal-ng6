@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-care-team-main',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CareTeamMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) { }
 
   ngOnInit() {
+    this.meta.addTag({ name: 'description', content: 'This has information about your NICU care team.' });
   }
 }

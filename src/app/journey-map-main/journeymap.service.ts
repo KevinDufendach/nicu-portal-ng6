@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Hero} from './journey-map-details/hero';
-import {HEROES} from './journey-map-details/mock-heroes';
+import {JourneyTile} from './journey-map-details/tileClass';
+import {journeyTileInfo} from './journey-map-details/journeyTileInfo';
 import {JourneyMapGoal} from './journey-map-goal';
 import {Observable} from 'rxjs/internal/Observable';
 import {of} from 'rxjs/internal/observable/of';
@@ -12,13 +12,13 @@ import {HttpClient} from '@angular/common/http';
 export class JourneymapService {
 
   constructor(private http: HttpClient) { }
-  getHeroes(): Observable<Hero[]> {
+  getTiles(): Observable<JourneyTile[]> {
     // TODO: send the message _after_ fetching the heroes
-    return of(HEROES);
+    return of(journeyTileInfo);
   }
-  getHero(id: number): Observable<Hero> {
+  getTile(id: number): Observable<JourneyTile> {
     // TODO: send the message _after_ fetching the hero
-    return of(HEROES.find(hero => hero.id === id));
+    return of(journeyTileInfo.find(journeyInfo => journeyInfo.id === id));
   }
   getDesktopTileConfig(): Observable<JourneyMapGoal[]> {
     const configJsonUrl = '/assets/JSON-files/tilesConfig/journeymap-tiles-desktop.json';

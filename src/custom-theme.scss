@@ -8,6 +8,32 @@ $custom-theme-primary: mat-palette($mat-my-teal, 500);
 $custom-theme-accent: mat-palette($mat-my-purple, 500);
 $custom-theme-warn: mat-palette($mat-red);
 
-$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+$custom-theme: mat-light-theme(
+    $custom-theme-primary,
+    $custom-theme-accent,
+    $custom-theme-warn
+  );
 
-@include angular-material-theme($custom-theme);
+
+
+
+  // theme colors
+  $custom-secondary-theme-primary: mat-palette($mat-pink, 700);
+  $custom-secondary-theme-accent: mat-palette($mat-green);
+  $custom-secondary-theme-warn: mat-palette($mat-red);
+
+  $custom-secondary-theme: mat-light-theme(
+      $custom-secondary-theme-primary,
+      $custom-secondary-theme-accent,
+      $custom-secondary-theme-warn)
+    ;
+
+  // create theme from palettes
+
+.custom-theme {
+  @include angular-material-theme($custom-theme)
+}
+
+.custom-secondary-theme {
+  @include angular-material-theme($custom-secondary-theme)
+}

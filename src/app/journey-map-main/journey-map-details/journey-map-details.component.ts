@@ -2,8 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {JourneymapService} from '../journeymap.service';
-import {Hero} from './hero';
-import {HEROES} from './mock-heroes';
+import {JourneyTile} from './tileClass';
+import {journeyTileInfo} from './journeyTileInfo';
 import {Observable} from 'rxjs/internal/Observable';
 import {of} from 'rxjs/internal/observable/of';
 
@@ -13,30 +13,30 @@ import {of} from 'rxjs/internal/observable/of';
   styleUrls: ['./journey-map-details.component.css']
 })
 export class JourneyMapDetailsComponent implements OnInit {
-  @Input() hero: Hero;
+  @Input() hero: JourneyTile;
   id: number;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: JourneymapService,
+    private journeymap: JourneymapService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getTileInfo();
   }
 
-  getHero(): void {
+  getTileInfo(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(this.id)
-      .subscribe(hero => this.hero = hero);
+    this.journeymap.getTile(this.id)
+      .subscribe(tileInfo => this.hero = tileInfo);
   }
 
   goBack(): void {
     this.location.back();
   }
 
-   getHeroDetail(id: number): Observable<Hero> {
-    return of(HEROES[id]);
+   getHeroDetail(id: number): Observable<JourneyTile> {
+    return of(journeyTileInfo[id]);
   }
 }

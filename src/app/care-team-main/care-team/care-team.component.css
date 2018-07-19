@@ -32,4 +32,14 @@ mat-grid-tile {
 
 .dashboard-card-content {
   text-align: center;
+  font-size: 18px;
+}
+.care-header {
+  font-size: 18px;
+}
+.care-subtitle {
+  font-size: 18px;
+}
+.care-title {
+  font-size: 18px;
 }

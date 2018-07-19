@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 
 import {LandingComponent} from './landing/landing.component';
@@ -40,9 +39,10 @@ import { environment } from '../environments/environment';
 import {JourneymapService} from './journey-map-main/journeymap.service';
 import { ChartsmainComponent } from './chartsmain/chartsmain.component';
 import { GrowthchartComponent } from './growthchart/growthchart.component';
+import {StartModuleModule} from './start-module/start-module.module';
 
-
-
+import {ThemeService} from './theme.service';
+import {FormsModule} from '@angular/forms';
 
 const configErrMsg = `You have not configured and imported the Firebase SDK.
 Make sure you go through the codelab setup instructions.`;
@@ -70,7 +70,7 @@ if (!environment.firebaseConfig) {
     AppComponent,
     LandingComponent,
     PatientInfoComponent,
-    JourneyMapComponent,
+    // JourneyMapComponent,
     LearningComponent,
     CareTeamComponent,
     NicViewComponent,
@@ -80,9 +80,9 @@ if (!environment.firebaseConfig) {
     PushNotificationPrefComponent,
     ChartsComponent,
     NotificationChatComponent,
-    PatientDataComponent,
+    // PatientDataComponent,
     JourneyMapDetailsComponent,
-    DashboardCardToolbarComponent,
+    // DashboardCardToolbarComponent,
     JourneyMapMainComponent,
     CareTeamMainComponent,
     LearningMainComponent,
@@ -94,19 +94,20 @@ if (!environment.firebaseConfig) {
     BrowserModule,
     ChartsModule,
     FlexLayoutModule,
+    StartModuleModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SmartAuthModule,
     MaterialImportsModule,
-    BrowserAnimationsModule,
     LayoutModule,
     AngularFireDatabaseModule,
+    FormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('/firebase-messaging-sw.js')
   ],
-  providers: [JourneymapService],
+  providers: [JourneymapService, ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

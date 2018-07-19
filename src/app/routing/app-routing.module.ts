@@ -15,14 +15,10 @@ import {CareTeamMainComponent} from '../care-team-main/care-team-main.component'
 import {ChartsmainComponent} from '../chartsmain/chartsmain.component';
 
 const routes = [
-  {path: 'dashboard', component: LandingComponent},
+  {path: 'dashboard', component: LandingComponent, loadChildren: '../../app/start-module/start-module.module#StartModuleModule'},
   {path: 'patientinfo', component: PatientInfoComponent},
   {
     path: 'journeymap', component: JourneyMapMainComponent,
-    // children: [
-    //   {path: '', redirectTo: 'journeymap', pathMatch: 'full'},
-    //   {path: 'journeymap/:id', component: JourneyMapDetailsComponent}
-    // ]
   },
   {path: 'journeymap/:id', component: JourneyMapDetailsComponent},
   {path: 'learning', component: LearningComponent},
@@ -36,7 +32,6 @@ const routes = [
 
 
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'landing', redirectTo: 'dashboard', pathMatch: 'full'},
 ];
 
 @NgModule({

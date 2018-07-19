@@ -303,7 +303,7 @@ export class GrowthchartComponent implements OnInit {
       .subscribe(
         obs => {
           this.observationList.push(obs);
-          console.log(this.observationList[0]);
+          // console.log(this.observationList[0]);
         });
     // getChartData(): void {
     //   this.chartService.getChartData()
@@ -327,7 +327,7 @@ export class GrowthchartComponent implements OnInit {
     }
     // this.lineChartLabels = this.lineChartLabels2;
     // console.log(this.lineChartLabels2);
-    console.log(this.lineChartLabels);
+    // console.log(this.lineChartLabels);
     this.lineChartData = _lineChartData[0];
   }
 }

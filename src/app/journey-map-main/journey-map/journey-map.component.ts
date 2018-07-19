@@ -3,7 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {JourneymapService} from '../journeymap.service';
-import {Hero} from '../journey-map-details/hero';
+import {JourneyTile} from '../journey-map-details/tileClass';
 import {JourneyMapGoal} from '../journey-map-goal';
 
 @Component({
@@ -12,7 +12,7 @@ import {JourneyMapGoal} from '../journey-map-goal';
   styleUrls: ['./journey-map.component.scss']
 })
 export class JourneyMapComponent implements OnInit {
-  heroes: Hero[];
+  journeyTileInfo: JourneyTile[];
   desktopTiles: JourneyMapGoal[];
   handsetTiles: JourneyMapGoal[];
 
@@ -20,24 +20,24 @@ export class JourneyMapComponent implements OnInit {
     .pipe(
       map(result => result.matches)
     );
-  constructor(private breakpointObserver: BreakpointObserver, private heroService: JourneymapService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private journeymap: JourneymapService) {}
 
   ngOnInit() {
-    this.getHeroes();
+    this.getTileInfo();
     this.getDesktopTileConfig();
     this.getHandsetTileConfig();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+  getTileInfo(): void {
+    this.journeymap.getTiles()
+      .subscribe(tileInfo => this.journeyTileInfo = tileInfo);
   }
   getDesktopTileConfig(): void {
-    this.heroService.getDesktopTileConfig()
+    this.journeymap.getDesktopTileConfig()
       .subscribe(desktopTileConfig => this.desktopTiles = desktopTileConfig);
   }
   getHandsetTileConfig(): void {
-    this.heroService.getHandsetTileConfig()
+    this.journeymap.getHandsetTileConfig()
       .subscribe(handsetTileConfig => this.handsetTiles = handsetTileConfig);
   }
 }

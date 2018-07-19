@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-nic-view',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NicViewComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private meta: Meta) { }
   ngOnInit() {
+    this.meta.addTag({ name: 'description', content: 'Come to this page to see your kkd on a screen' });
+
   }
 
 }

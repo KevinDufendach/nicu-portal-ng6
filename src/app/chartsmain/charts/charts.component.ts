@@ -72,9 +72,13 @@ export class ChartsComponent implements OnInit, AfterContentInit {
       }
     );
     this.getWeights();
+    // this.putWeightsInArray();
+    // console.log(this.weightList);
+    // this.randomize();
   }
 
   ngAfterContentInit() {
+
   }
 
   getPatient() {
@@ -88,7 +92,10 @@ export class ChartsComponent implements OnInit, AfterContentInit {
       .subscribe(
         obs => {
           this.observationList.push(obs);
-          console.log(this.observationList[0]);
+          // console.log(this.observationList[0]);
+          // console.log(this.observationList[1]);
+          // console.log(this.observationList[2]);
+          // console.log(this.observationList[3]);
         });
   }
 
@@ -101,76 +108,18 @@ export class ChartsComponent implements OnInit, AfterContentInit {
     this.lineChartLabels.reverse();
     console.log(this.weightList);
   }
+
   public randomize(): void {
     const _lineChartData: Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
       _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
       for (let j = 0; j < this.lineChartData[i].data.length; j++) {
         _lineChartData[i] = this.weightList;
-        console.log(_lineChartData);
       }
     }
     // this.lineChartLabels = this.lineChartLabels2;
     // console.log(this.lineChartLabels2);
-    console.log(this.lineChartLabels);
     this.lineChartData = _lineChartData[0];
   }
-  // createLine(data) {
-  //   data = this.weightList;
-  //   this.svgWidth = 600, this.svgHeight = 400;
-  //   this.margin = {top: 20, right: 20, bottom: 30, left: 50};
-  //   this.width = this.svgWidth - this.margin.left - this.margin.right;
-  //   this.height = this.svgHeight - this.margin.top - this.margin.bottom;
-  //   this.svg = d3.select('svg')
-  //     .attr('width', this.svgWidth)
-  //     .attr('height', this.svgHeight);
-  //   const g = this.svg.append('g')
-  //     .attr('transform',
-  //       'translate(' + this.margin.left + ',' + this.margin.top + ')'
-  //     );
-  //   const x = d3.scaleTime().rangeRound([0, this.width]);
-  //   const y = d3.scaleLinear().rangeRound([this.height, 0]);
-  //   this.line = d3.line()
-  //     // .x(function (d) {
-  //     //   return x(d.date);
-  //     // })
-  //     .y(function (d) {
-  //       return y(d.value);
-  //     });
-  //   // x.domain(d3.extent(data, function (d) {
-  //   //   return d.date;
-  //   // }));
-  //   y.domain(d3.extent(data, function (d) {
-  //     return d.value;
-  //   }));
-  //   g.append('g')
-  //     .attr('transform', 'translate(0,' + this.height + ')')
-  //     .call(d3.axisBottom(x))
-  //     .select('.domain');
-  //   g.append('g')
-  //     .call(d3.axisLeft(y))
-  //     .append('text')
-  //     .attr('fill', '#000')
-  //     .attr('transform', 'rotate(-90)')
-  //     .attr('y', 6)
-  //     .attr('dy', '10px')
-  //     .attr('text-anchor', 'end')
-  //     .text('Price ($)');
-  //   g.append('path')
-  //     .datum(data)
-  //     .attr('fill', 'none')
-  //     .attr('stroke', 'steelblue')
-  //     .attr('stroke-linejoin', 'round')
-  //     .attr('stroke-linecap', 'round')
-  //     .attr('stroke-width', 1.5)
-  //     .attr('d', this.line);
-  // }
-  //   convert() {
-  //     this.valueOne = this.weightList[0];
-  //     console.log(typeof this.valueOne);
-  //     this.valueTwo = this.weightList[1];
-  //     this.valueThree = this.weightList[2];
-  //     this.valueFour = this.weightList[3]; // convert string to number
-  // }
 }
-// this.weightList.push(obs.valueQuantity);
+// CDC WHO FENTON

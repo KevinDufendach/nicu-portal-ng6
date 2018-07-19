@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "nicu-portal",
-    "staging": "nicu-portal-staging"
+    "staging": "nicu-portal-staging",
+    "jasons-dev": "ng-pwa-fc542"
   }
 }

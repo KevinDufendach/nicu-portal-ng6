@@ -10,6 +10,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material';
 import {MatFormFieldModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -20,6 +21,7 @@ const materialModules = [
   MatButtonModule,
   MatMenuModule,
   MatIconModule,
+  MatSlideToggleModule,
   MatTabsModule,
   MatSidenavModule,
   MatCardModule,

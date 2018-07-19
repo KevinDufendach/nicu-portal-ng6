@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chartsmain',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartsmainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) { }
 
   ngOnInit() {
+    this.meta.addTag({ name: 'description', content: 'This has visual graphs of your child\'s weights' });
+
   }
 
 }
