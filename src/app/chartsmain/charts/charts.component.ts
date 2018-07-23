@@ -1,7 +1,8 @@
 import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {EpicAuthService} from '../../auth/smart-auth/epic-auth.service';
-import Patient = fhir.Patient;
 import {FhirService} from '../../auth/fhir/fhir.service';
+import {Observable} from 'rxjs';
+import Patient = fhir.Patient;
 import Observation = fhir.Observation;
 
 
@@ -63,15 +64,17 @@ export class ChartsComponent implements OnInit, AfterContentInit {
   ];
   public lineChartLegend = true;
   public lineChartType = 'line';
+
   constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
   }
 
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
-        this.getPatient();
+        this.getPatient().subscribe( a => this.getWeights().subscribe());
       }
     );
-    this.getWeights();
+
+    // this.getWeights();
     // this.putWeightsInArray();
     // console.log(this.weightList);
     // this.randomize();
@@ -81,22 +84,38 @@ export class ChartsComponent implements OnInit, AfterContentInit {
 
   }
 
-  getPatient() {
-    this.fhirService.getPatient().subscribe(pt =>
-      this.patient = pt
-    );
+  getPatient(): Observable<any> {
+    console.log('getting patient');
+    return new Observable<any>(subscriber => {
+      this.fhirService.getPatient().subscribe(pt => {
+          this.patient = pt;
+          subscriber.next();
+          subscriber.complete();
+        }
+      );
+    });
   }
 
-  getWeights() {
-    this.fhirService.getObservations('29463-7')
-      .subscribe(
-        obs => {
-          this.observationList.push(obs);
-          // console.log(this.observationList[0]);
-          // console.log(this.observationList[1]);
-          // console.log(this.observationList[2]);
-          // console.log(this.observationList[3]);
-        });
+  getWeights(): Observable<any> {
+    return new Observable(subscriber => {
+      this.fhirService.getObservations('29463-7')
+        .subscribe(
+          obs => {
+            this.observationList.push(obs);
+            // console.log(this.observationList[0]);
+            // console.log(this.observationList[1]);
+            // console.log(this.observationList[2]);
+            // console.log(this.observationList[3]);
+          },
+          error => subscriber.error(error),
+          () => {
+            subscriber.next(this.weightList);
+            subscriber.complete();
+          }
+        );
+
+    });
+
   }
 
   putWeightsInArray() {
@@ -122,4 +141,5 @@ export class ChartsComponent implements OnInit, AfterContentInit {
     this.lineChartData = _lineChartData[0];
   }
 }
+
 // CDC WHO FENTON

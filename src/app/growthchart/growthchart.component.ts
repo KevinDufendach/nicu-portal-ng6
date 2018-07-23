@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // import {ChartData} from './chartDef';
 // import {ChartService} from './chart.service';
 // import {BreakpointObserver} from '@angular/cdk/layout';
@@ -287,9 +287,9 @@ export class GrowthchartComponent implements OnInit {
   ngOnInit() {
     this.epicAuthService.completeLoginWithCode().then(_ => {
         this.getPatient();
+        this.getWeights();
       }
     );
-    this.getWeights();
   }
 
   getPatient() {
@@ -311,12 +311,14 @@ export class GrowthchartComponent implements OnInit {
     //   console.log('yo');
     // }
   }
+
   putWeightsInArray() {
     for (let i = 0; i < this.observationList.length; i++) {
       this.weightList.push(this.observationList[i].valueQuantity.value);
     }
     this.weightList.reverse();
   }
+
   public randomize(): void {
     const _lineChartData: Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {

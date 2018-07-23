@@ -56,6 +56,8 @@ export class FhirService {
               observer.next(<Observation> e.resource);
             }
           }
+
+          observer.complete();
         }
       );
     }));
