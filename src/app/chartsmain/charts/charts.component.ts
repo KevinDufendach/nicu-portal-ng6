@@ -85,7 +85,6 @@ export class ChartsComponent implements OnInit, AfterContentInit {
   }
 
   getPatient(): Observable<any> {
-    console.log('getting patient');
     return new Observable<any>(subscriber => {
       this.fhirService.getPatient().subscribe(pt => {
           this.patient = pt;
@@ -102,6 +101,7 @@ export class ChartsComponent implements OnInit, AfterContentInit {
         .subscribe(
           obs => {
             this.observationList.push(obs);
+            console.log(this.observationList);
             // console.log(this.observationList[0]);
             // console.log(this.observationList[1]);
             // console.log(this.observationList[2]);
@@ -109,6 +109,7 @@ export class ChartsComponent implements OnInit, AfterContentInit {
           },
           error => subscriber.error(error),
           () => {
+            this.putWeightsInArray();
             subscriber.next(this.weightList);
             subscriber.complete();
           }
