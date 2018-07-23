@@ -13,7 +13,7 @@ import {ThemeService} from '../theme.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit, DoCheck {
-  theme = 'custom-theme';
+  theme = 'cchmc-dev-theme';
   message: string;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

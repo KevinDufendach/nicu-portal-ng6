@@ -6,16 +6,14 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <header>
-        <a mat-list-item href="/dashboard">Dashboard</a>
-      <!--<a mat-list-item href="/patientinfo">Patient Info</a>-->
-        <a mat-list-item href="/journeymap">Journey Map</a>
-        <a mat-list-item href="/learning">My Learning</a>
-        <a mat-list-item href="/careteam">Our Team</a>
-        <a mat-list-item href="/nicview">NICView</a>
+        <a mat-list-item routerLink="dashboard">Dashboard</a>
+        <a mat-list-item routerLink="journeymap">Journey Map</a>
+        <a mat-list-item routerLink="learning">My Learning</a>
+        <a mat-list-item routerLink="careteam">Our Team</a>
+        <a mat-list-item routerLink="nicview">NICView</a>
 
       </header>
       <!--<a mat-list-item href="/caringbridge">Caring Bridge</a>-->
