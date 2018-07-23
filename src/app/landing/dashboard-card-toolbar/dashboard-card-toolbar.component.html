@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
   <span>{{title}}</span>
   <span fxFlex></span>
-  <button class="icon-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+ <button class="icon-button" mat-icon-button aria-label="Toggle menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <button *ngIf="link" routerLink="{{link}}" mat-icon-button aria-label="more details">
     <mat-icon>launch</mat-icon>
   </button>
   <!--<mat-menu #menu="matMenu" xPosition="before">-->
-    <!--<button mat-menu-item>Expand</button>-->
-    <!--<button mat-menu-item>Remove</button>-->
+  <!--<button mat-menu-item>Expand</button>-->
+  <!--<button mat-menu-item>Remove</button>-->
   <!--</mat-menu>-->
 </mat-toolbar>

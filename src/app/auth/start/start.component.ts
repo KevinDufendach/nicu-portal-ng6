@@ -31,7 +31,7 @@ export class StartComponent implements OnInit {
       name: 'description',
       content: 'Login in to the hospital your child belongs too throguh their myChart'
     });
-    this.themeservice.currentMessage.subscribe(message => this.message = message)
+    this.themeservice.currentMessage.subscribe(message => this.message = message);
   }
 
   getEndpointConfig(endpoint: FhirApiEndpoint) {
