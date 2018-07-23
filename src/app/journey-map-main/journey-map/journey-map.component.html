@@ -7,8 +7,8 @@
                  [rowspan]="tile.rows"
                  [style.background]="tile.color">
     <a routerLink="/journeymap/{{tile.id}}"><h3>{{tile.text}}</h3></a>
-    <img *ngIf="tile['img']" class="tile-img" src="{{tile['img']}}">
-    <img *ngIf="tile['icon']" class="tile-icon" src="{{tile['icon']}}">
+    <img *ngIf="tile['img_uri']" class="tile-img" src="{{tile['img_uri']}}">
+    <img *ngIf="tile['svg_icon']" class="tile-icon" src="{{tile['svg_icon']}}">
   </mat-grid-tile>
 </mat-grid-list>
 
