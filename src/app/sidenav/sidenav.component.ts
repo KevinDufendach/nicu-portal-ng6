@@ -27,12 +27,10 @@ export class SidenavComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.theme = window.localStorage.getItem('selectedTheme');
     this.themeservice.currentMessage.subscribe(message => this.message = message);
-    console.log(this.message);
     }
   ngDoCheck() {
     // The theme service grabs the current value of the select element in the start component and makes it a behavior subject here
     this.themeservice.currentMessage.subscribe(message => this.message = message);
-    console.log(this.message);
     this.themeservice.currentMessage.subscribe(message => this.message = message);
     // If statements to change value of the theme string to determine what theme to make it on initialization
     // I have a notepad version with all of the if statements and theme names i want to use but I didnt want to add that yet

@@ -13,7 +13,6 @@ import {ThemeService} from '../../theme.service';
 })
 export class StartComponent implements OnInit {
   message: string;
-  theme = '';
   endpoints: FhirApiEndpoint[];
   selectedEndpoint: FhirApiEndpoint;
   endpointConfig: AuthConfig;
@@ -44,7 +43,6 @@ export class StartComponent implements OnInit {
       this.endpointConfig = config;
       console.log(this.selectedEndpoint.OrganizationName);
       this.themeservice.changeMessage(this.selectedEndpoint.OrganizationName);
-      console.log(this.message);
       this.loading = false;
       this.ready = true;
     });
