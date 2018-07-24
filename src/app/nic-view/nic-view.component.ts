@@ -7,7 +7,6 @@ import {Meta} from '@angular/platform-browser';
   styleUrls: ['./nic-view.component.css']
 })
 export class NicViewComponent implements OnInit {
-
   constructor(private meta: Meta) { }
   ngOnInit() {
     this.meta.addTag({ name: 'description', content: 'Come to this page to see your kkd on a screen' });
