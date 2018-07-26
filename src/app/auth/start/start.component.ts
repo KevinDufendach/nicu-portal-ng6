@@ -42,6 +42,7 @@ export class StartComponent implements OnInit {
       console.log('configuration information retrieved');
       this.endpointConfig = config;
       console.log(this.selectedEndpoint.OrganizationName);
+      console.log(this.selectedEndpoint.FHIRPatientFacingURI);
       this.themeservice.changeMessage(this.selectedEndpoint.OrganizationName);
       this.loading = false;
       this.ready = true;

@@ -1579,6 +1579,8 @@ export class OAuthService extends AuthConfig {
       scope = 'openid ' + scope;
     }
 
+    const aud = this.issuer;
+
     let url =
       that.loginUrl +
       seperationChar +
@@ -1591,7 +1593,9 @@ export class OAuthService extends AuthConfig {
       '&redirect_uri=' +
       encodeURIComponent(redirectUri) +
       '&scope=' +
-      encodeURIComponent(scope);
+      encodeURIComponent(scope) +
+      '&aud=' +
+      encodeURIComponent(aud);
 
     if (loginHint) {
       url += '&login_hint=' + encodeURIComponent(loginHint);
@@ -1628,7 +1632,7 @@ export class OAuthService extends AuthConfig {
   private initAuthorizationCodeFlowInternal(): void {
 
     if (!this.validateUrlForHttps(this.loginUrl)) {
-      throw new Error('loginUrl must use Http. Also check property requireHttps.');
+      throw new Error('loginUrl must use Https. Also check property requireHttps.');
     }
 
     this.createLoginUrl('', '', null, false, {}).then(function (url) {
