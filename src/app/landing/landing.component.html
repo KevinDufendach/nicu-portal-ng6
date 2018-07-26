@@ -11,11 +11,8 @@
 
         <div class="dashboard-card">
           <app-dashboard-card-toolbar [title]="'Growth Chart'" [link]="'/chart'"></app-dashboard-card-toolbar>
-          <div class="dashboard-card-content">
-            <h4>Weight Observations</h4>
-            <ul>
-              <li *ngFor="let wtQuantity of weightList">{{wtQuantity.value}} {{wtQuantity.unit}}</li>
-            </ul>
+          <div class="dashboard-card-content-chart">
+            <app-charts></app-charts>
           </div>
         </div>
 

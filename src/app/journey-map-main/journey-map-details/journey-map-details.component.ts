@@ -13,7 +13,7 @@ import {of} from 'rxjs/internal/observable/of';
   styleUrls: ['./journey-map-details.component.css']
 })
 export class JourneyMapDetailsComponent implements OnInit {
-  @Input() hero: JourneyTile;
+  @Input() journey: JourneyTile;
   id: number;
 
   constructor(
@@ -29,14 +29,14 @@ export class JourneyMapDetailsComponent implements OnInit {
   getTileInfo(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.journeymap.getTile(this.id)
-      .subscribe(tileInfo => this.hero = tileInfo);
+      .subscribe(tileInfo => this.journey = tileInfo);
   }
 
   goBack(): void {
     this.location.back();
   }
 
-   getHeroDetail(id: number): Observable<JourneyTile> {
+   getJourneyDetail(id: number): Observable<JourneyTile> {
     return of(journeyTileInfo[id]);
   }
 }

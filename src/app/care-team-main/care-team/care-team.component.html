@@ -1,5 +1,5 @@
 <div class="grid-container" *ngIf="!(isHandset$ | async) ">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Your Care Team</h1>
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let card of desktopCards" [colspan]="card.cols" [rowspan]="card.rows" [style.background]="card.color">
       <mat-card class="dashboard-card">

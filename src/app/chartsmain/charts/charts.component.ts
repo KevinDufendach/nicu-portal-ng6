@@ -15,18 +15,6 @@ export class ChartsComponent implements OnInit, AfterContentInit {
   observationList: Observation[] = [];
   weightList: any[] = [];
 
-  // svgWidth;
-  // margin;
-  // width;
-  // height;
-  // svg;
-  // svgHeight;
-  // line;
-  //
-  // valueOne;
-  // valueTwo;
-  // valueThree;
-  // valueFour;
   lineChartData: Array<any> = [
     {data: [1, 3, 5, 7, 9], label: 'Your Child'},
   ];
@@ -126,8 +114,6 @@ export class ChartsComponent implements OnInit, AfterContentInit {
         _lineChartData[i] = this.weightList;
       }
     }
-    // this.lineChartLabels = this.lineChartLabels2;
-    // console.log(this.lineChartLabels2);
     this.lineChartData = _lineChartData[0];
   }
 }

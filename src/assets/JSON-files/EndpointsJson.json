@@ -13,6 +13,6 @@
   },
   {
     "OrganizationName": "SMART Test Server",
-    "FHIRPatientFacingURI": "https://boomertest.cchmc.org/fhir/api/FHIR/DSTU2/"
+    "FHIRPatientFacingURI": "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiIxYzMzYjIzNi1hNjc4LTRlZTctODYzZS1iYWIwMDQ4MWEyZjMifQ/fhir/"
   }
 ]
