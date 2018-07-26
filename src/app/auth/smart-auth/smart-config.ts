@@ -3,6 +3,13 @@
 
 import {AuthConfig} from '../../../angular-oauth2-oidc/auth.config';
 
+export const clientIdList = {
+  epic_test: 'a0d973e2-baed-4808-ab27-03df890a33ce',
+  epic_prod: 'eee61f0c-c910-4ff0-beb4-aec2f1f62f17',
+  cerner: 'b75a2703-a5bd-4e78-aad6-46a7b00ed25d',
+  smart_health_it: 'my-smart-health-it-client-id'
+};
+
 export const baseSmartAuthConfig: AuthConfig = {
   // https://manfredsteyer.github.io/angular-oauth2-oidc/docs/
   //         additional-documentation/configure-library-for-implicit-flow-without-discovery-document.html

@@ -1,18 +1,38 @@
-[
-  {
-    "OrganizationName": "Open.Epic Argonaut Profile",
-    "FHIRPatientFacingURI": "https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/"
-  },
-  {
-    "OrganizationName": "CCHMC Dev Server",
-    "FHIRPatientFacingURI": "https://boomertest.cchmc.org/fhir/api/FHIR/DSTU2/"
-  },
-  {
-    "OrganizationName": "UC Dev Server",
-    "FHIRPatientFacingURI": "https://epic-soap-test.uchealth.com/FHIRProxy/api/FHIR/DSTU2/"
-  },
-  {
-    "OrganizationName": "SMART Test Server",
-    "FHIRPatientFacingURI": "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiIxYzMzYjIzNi1hNjc4LTRlZTctODYzZS1iYWIwMDQ4MWEyZjMifQ/fhir/"
-  }
-]
+{
+  "epic_test": [
+    {
+      "OrganizationName": "Open.Epic Argonaut Profile",
+      "FHIRPatientFacingURI": "https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/"
+    },
+    {
+      "OrganizationName": "CCHMC Dev Server",
+      "FHIRPatientFacingURI": "https://boomertest.cchmc.org/fhir/api/FHIR/DSTU2/"
+    },
+    {
+      "OrganizationName": "UC Dev Server",
+      "FHIRPatientFacingURI": "https://epic-soap-test.uchealth.com/FHIRProxy/api/FHIR/DSTU2/"
+    },
+    {
+      "OrganizationName": "SMART Test Server",
+      "FHIRPatientFacingURI": "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiIzMTA1NmVmOS1iNTY0LTQxN2MtOGRlZS05Njc4M2JiMTRmYWQifQ/fhir/"
+    }
+  ],
+  "epic_prod": [
+    {
+      "OrganizationName": "Mercy Health - OH, KY",
+      "FHIRPatientFacingURI": "https://chperx.health-partners.org/Proxy-FHIR/api/FHIR/DSTU2/"
+    }
+  ],
+  "cerner": [
+    {
+      "OrganizationName": "Cerner Sandbox",
+      "FHIRPatientFacingURI": "https://fhir-myrecord.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/"
+    }
+  ],
+  "smart_health_it": [
+    {
+      "OrganizationName": "SMART Test Server",
+      "FHIRPatientFacingURI": "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiIzMTA1NmVmOS1iNTY0LTQxN2MtOGRlZS05Njc4M2JiMTRmYWQifQ/fhir/"
+    }
+  ]
+}
