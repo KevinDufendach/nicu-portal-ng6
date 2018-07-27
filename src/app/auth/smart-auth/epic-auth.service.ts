@@ -64,14 +64,15 @@ export class EpicAuthService {
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
-  generateAuthConfig(endpoint: string): Observable<AuthConfig> {
+  generateAuthConfig(endpoint: FhirApiEndpoint): Observable<AuthConfig> {
     return new Observable<AuthConfig>(subscriber => {
       // get auth config from URI
       const config: AuthConfig = Object.assign({}, baseSmartAuthConfig);
 
-      config.issuer = endpoint;
+      config.clientId = endpoint.clientId;
+      config.issuer = endpoint.FHIRPatientFacingURI;
 
-      this.getConfigMetadata(endpoint).subscribe((data: CapabilityStatement) => {
+      this.getConfigMetadata(endpoint.FHIRPatientFacingURI).subscribe((data: CapabilityStatement) => {
         try {
           for (const ext of data.rest[0].security.extension[0].extension) {
             switch (ext.url) {

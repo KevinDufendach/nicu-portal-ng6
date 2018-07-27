@@ -45,7 +45,7 @@ export class StartComponent implements OnInit {
     this.loading = true;
     this.ready = false;
 
-    this.epicAuthService.generateAuthConfig(endpoint.FHIRPatientFacingURI).subscribe(config => {
+    this.epicAuthService.generateAuthConfig(endpoint).subscribe(config => {
       console.log('configuration information retrieved');
       this.endpointConfig = config;
       console.log(this.selectedEndpoint.OrganizationName);

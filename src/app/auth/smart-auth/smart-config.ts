@@ -47,7 +47,7 @@ export const baseSmartAuthConfig: AuthConfig = {
   redirectUri: window.location.origin + '/dashboard',
 
   // The SPA's id. The SPA is registered with this id at the auth-server
-  clientId: 'a0d973e2-baed-4808-ab27-03df890a33ce',
+  // clientId: 'a0d973e2-baed-4808-ab27-03df890a33ce',
   // clientId: 'eee61f0c-c910-4ff0-beb4-aec2f1f62f17',
 
   // set the scope for the permissions the client should request
