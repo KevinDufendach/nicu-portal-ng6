@@ -28,7 +28,10 @@ export class SidenavComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this.theme = window.localStorage.getItem('selectedTheme');
+    if (this.theme = 'cchmc-dev-theme') {
+      window.sessionStorage.setItem('selectedTheme', this.theme);
+    }
+    this.theme = window.sessionStorage.getItem('selectedTheme');
     this.themeservice.currentMessage.subscribe(message => this.message = message);
   }
 
@@ -55,6 +58,6 @@ export class SidenavComponent implements OnInit, DoCheck {
   // Stores the string value of the theme under the key selectedTheme in the local storage
   @HostListener('window:unload', ['$event'])
   unloadHandler() {
-    window.localStorage.setItem('selectedTheme', this.theme);
+    window.sessionStorage.setItem('selectedTheme', this.theme);
   }
 }
