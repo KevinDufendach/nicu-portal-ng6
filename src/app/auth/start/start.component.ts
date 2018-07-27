@@ -9,9 +9,6 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
 import {map, startWith} from 'rxjs/operators';
 
-export interface User {
-  name: string;
-}
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',

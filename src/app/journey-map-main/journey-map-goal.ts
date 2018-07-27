@@ -10,4 +10,5 @@ export interface JourneyMapGoal {
   cols: number;
   rows: number;
   color?: string;
+  group?: number;
 }

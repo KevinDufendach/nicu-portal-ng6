@@ -15,6 +15,7 @@ export class JourneyMapComponent implements OnInit {
   journeyTileInfo: JourneyTile[];
   desktopTiles: JourneyMapGoal[];
   handsetTiles: JourneyMapGoal[];
+  groupNumber: number;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

@@ -23,15 +23,19 @@ export class JourneymapService {
     return of(journeyTileInfo.find(journeyInfo => journeyInfo.id === id));
   }
 
+
   getDesktopTileConfig(): Observable<JourneyMapGoal[]> {
     const configJsonUrl = '/assets/JSON-files/tilesConfig/journeymap-tiles-desktop.json';
-
     return this.http.get<JourneyMapGoal[]>(configJsonUrl);
   }
 
   getHandsetTileConfig(): Observable<JourneyMapGoal[]> {
     const configJsonUrl = '/assets/JSON-files/tilesConfig/journeymap-tiles-handset.json';
 
+    return this.http.get<JourneyMapGoal[]>(configJsonUrl);
+  }
+  getColors(): Observable<JourneyMapGoal[]> {
+    const configJsonUrl = '/assets/JSON-files/tilesConfig/journeymap-tiles-desktop.json';
     return this.http.get<JourneyMapGoal[]>(configJsonUrl);
   }
 }
