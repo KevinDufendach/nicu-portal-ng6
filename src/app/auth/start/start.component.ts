@@ -13,22 +13,31 @@ import {ThemeService} from '../../theme.service';
 })
 export class StartComponent implements OnInit {
   message: string;
-  endpoints: FhirApiEndpoint[];
+  endpoints: FhirApiEndpoint[] = [];
   selectedEndpoint: FhirApiEndpoint;
   endpointConfig: AuthConfig;
 
   loading = false;
   ready = false;
 
-  constructor(private themeservice: ThemeService, public epicAuthService: EpicAuthService, private meta: Meta, private overlayContainer: OverlayContainer) {
+  constructor(
+    private themeservice: ThemeService,
+    public epicAuthService: EpicAuthService,
+    private meta: Meta,
+    private overlayContainer: OverlayContainer,
+  ) {
     overlayContainer.getContainerElement().classList.add('custom-theme');
   }
 
   ngOnInit() {
-    this.epicAuthService.getEndpoints().subscribe(endpoints => this.endpoints = endpoints);
+    this.epicAuthService.getEndpoints().subscribe(endpoints => {
+      console.log('adding endpoints');
+      console.log(endpoints);
+      this.endpoints = [...this.endpoints, ...endpoints];
+    });
     this.meta.addTag({
       name: 'description',
-      content: 'Login in to the hospital your child belongs too throguh their myChart'
+      content: 'Login in through your child\'s hospital (a portal account is needed)'
     });
     this.themeservice.currentMessage.subscribe(message => this.message = message);
   }

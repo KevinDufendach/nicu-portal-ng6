@@ -10,6 +10,30 @@ export const clientIdList = {
   smart_health_it: 'my-smart-health-it-client-id'
 };
 
+export interface VendorClientReference {
+  url: string;
+  clientId: string;
+}
+
+export const vendorClientReferences: VendorClientReference[] = [
+  {
+    url: '/assets/JSON-files/epicTestEndpoints.json',
+    clientId: clientIdList.epic_test
+  },
+  {
+    url: '/assets/JSON-files/epicEndpoints.json',
+    clientId: clientIdList.epic_prod
+  },
+  {
+    url: '/assets/JSON-files/cernerEndpoints.json',
+    clientId: clientIdList.cerner
+  },
+  {
+    url: '/assets/JSON-files/smartHealthItEndpoints.json',
+    clientId: clientIdList.smart_health_it
+  }
+];
+
 export const baseSmartAuthConfig: AuthConfig = {
   // https://manfredsteyer.github.io/angular-oauth2-oidc/docs/
   //         additional-documentation/configure-library-for-implicit-flow-without-discovery-document.html

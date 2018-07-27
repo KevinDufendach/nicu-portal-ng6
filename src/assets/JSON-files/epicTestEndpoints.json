@@ -1,0 +1,14 @@
+[
+  {
+    "OrganizationName": "Open.Epic Argonaut Profile",
+    "FHIRPatientFacingURI": "https://open-ic.epic.com/argonaut/api/FHIR/Argonaut/"
+  },
+  {
+    "OrganizationName": "CCHMC Dev Server",
+    "FHIRPatientFacingURI": "https://boomertest.cchmc.org/fhir/api/FHIR/DSTU2/"
+  },
+  {
+    "OrganizationName": "UC Dev Server",
+    "FHIRPatientFacingURI": "https://epic-soap-test.uchealth.com/FHIRProxy/api/FHIR/DSTU2/"
+  }
+]

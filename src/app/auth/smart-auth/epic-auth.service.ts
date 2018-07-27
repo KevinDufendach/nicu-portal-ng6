@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {baseSmartAuthConfig} from './smart-config';
+import {baseSmartAuthConfig, vendorClientReferences} from './smart-config';
 import {OAuthService} from '../../../angular-oauth2-oidc/oauth-service';
 import {NullValidationHandler} from '../../../angular-oauth2-oidc/token-validation/null-validation-handler';
 import {FhirApiEndpoint} from './fhir-api-endpoint';
@@ -40,8 +40,32 @@ export class EpicAuthService {
   }
 
   getEndpoints(): Observable<FhirApiEndpoint[]> {
-    const endpointJsonUrl = '/assets/JSON-files/EndpointsJson.json';
+    return new Observable<FhirApiEndpoint[]>(subscriber => {
+      let pending = 0;
+      for (const vendorRef of vendorClientReferences) {
+        pending++;
 
+        this.getEndpointsFromUrl(vendorRef.url).subscribe( endpoints => {
+          pending--;
+          for (const endpoint of endpoints) {
+            endpoint.clientId = vendorRef.clientId;
+          }
+
+          subscriber.next(endpoints);
+          if (pending === 0) {
+            subscriber.complete();
+          }
+        });
+      }
+
+
+
+    });
+
+
+  }
+
+  getEndpointsFromUrl(endpointJsonUrl): Observable<FhirApiEndpoint[]> {
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
