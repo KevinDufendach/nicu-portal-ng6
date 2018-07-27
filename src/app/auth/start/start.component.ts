@@ -31,8 +31,6 @@ export class StartComponent implements OnInit {
 
   ngOnInit() {
     this.epicAuthService.getEndpoints().subscribe(endpoints => {
-      console.log('adding endpoints');
-      console.log(endpoints);
       this.endpoints = [...this.endpoints, ...endpoints];
     });
     this.meta.addTag({
