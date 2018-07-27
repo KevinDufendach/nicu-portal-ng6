@@ -57,12 +57,7 @@ export class EpicAuthService {
           }
         });
       }
-
-
-
     });
-
-
   }
 
   getEndpointsFromUrl(endpointJsonUrl): Observable<FhirApiEndpoint[]> {
