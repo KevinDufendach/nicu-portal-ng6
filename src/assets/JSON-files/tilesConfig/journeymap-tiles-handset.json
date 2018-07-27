@@ -7,7 +7,7 @@
   },
 
   {
-    "text": "Learn About the NICU",
+    "text": "Learn about the NICU",
     "cols": 1,
     "rows": 1,
     "color": "#C6579A",
@@ -25,7 +25,7 @@
   },
 
   {
-    "text": "Learn about my Child's disgnosis ",
+    "text": "Learn about my Child's diagnosis",
     "cols": 1,
     "rows": 1,
     "color": "#C6579A",
@@ -43,7 +43,7 @@
   },
 
   {
-    "text": "Learn about my Child's treatment",
+    "text": "Learn about my child's treatment",
     "cols": 1,
     "rows": 1,
     "color": "#00AEC7",
@@ -86,7 +86,7 @@
   },
 
   {
-    "text": "demonstrate my skills",
+    "text": "Demonstrate my skills",
     "cols": 1,
     "rows": 1,
     "color": "#C6579A",
@@ -103,7 +103,7 @@
   },
 
   {
-    "text": "schedule follow up appointments",
+    "text": "Schedule follow up appointments",
     "cols": 1,
     "rows": 1,
     "color": "#78BE20",

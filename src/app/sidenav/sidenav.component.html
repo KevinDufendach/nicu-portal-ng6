@@ -33,7 +33,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span style="color: black;">My NICU Portal</span>
+      <span>My NICU Portal</span>
       <span fxFlex></span>
       <button mat-button *ngIf="epicAuthService.isLoggedIn()" (click)="epicAuthService.logout()">Log Out</button>
     </mat-toolbar>

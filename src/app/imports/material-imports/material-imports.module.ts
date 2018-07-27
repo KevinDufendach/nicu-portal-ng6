@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
@@ -11,6 +12,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material';
 import {MatFormFieldModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -19,6 +22,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 const materialModules = [
   MatToolbarModule,
   MatButtonModule,
+  MatInputModule,
   MatMenuModule,
   MatIconModule,
   MatSlideToggleModule,
@@ -27,6 +31,7 @@ const materialModules = [
   MatCardModule,
   MatListModule,
   MatGridListModule,
+  MatAutocompleteModule,
   MatFormFieldModule,
   MatSelectModule,
   MatProgressSpinnerModule,

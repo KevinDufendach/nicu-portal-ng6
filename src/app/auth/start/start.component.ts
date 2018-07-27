@@ -5,13 +5,22 @@ import {AuthConfig} from '../../../angular-oauth2-oidc/auth.config';
 import {Meta} from '@angular/platform-browser';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import {ThemeService} from '../../theme.service';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs/internal/Observable';
+import {map, startWith} from 'rxjs/operators';
 
+export interface User {
+  name: string;
+}
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css']
 })
 export class StartComponent implements OnInit {
+  options: string[] = ['Open.Epic Argonaut Profile', 'CCHMC Dev Server', 'UC Dev Server', 'SMART Test Server'];
+  filteredOptions: Observable<string[]>;
+  myControl = new FormControl();
   message: string;
   endpoints: FhirApiEndpoint[];
   selectedEndpoint: FhirApiEndpoint;
@@ -31,6 +40,11 @@ export class StartComponent implements OnInit {
       content: 'Login in to the hospital your child belongs too throguh their myChart'
     });
     this.themeservice.currentMessage.subscribe(message => this.message = message);
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
 
   getEndpointConfig(endpoint: FhirApiEndpoint) {
@@ -43,13 +57,20 @@ export class StartComponent implements OnInit {
       this.endpointConfig = config;
       console.log(this.selectedEndpoint.OrganizationName);
       console.log(this.selectedEndpoint.FHIRPatientFacingURI);
-      this.themeservice.changeMessage(this.selectedEndpoint.OrganizationName);
       this.loading = false;
       this.ready = true;
     });
   }
-
+  onSelectionChange(endpoint: FhirApiEndpoint) {
+    this.getEndpointConfig(endpoint);
+    this.themeservice.changeMessage(endpoint.OrganizationName);
+  }
   login(): void {
     this.epicAuthService.login();
+  }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

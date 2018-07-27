@@ -40,9 +40,8 @@ import {JourneymapService} from './journey-map-main/journeymap.service';
 import { ChartsmainComponent } from './chartsmain/chartsmain.component';
 import { GrowthchartComponent } from './growthchart/growthchart.component';
 import {StartModuleModule} from './start-module/start-module.module';
-
 import {ThemeService} from './theme.service';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 const configErrMsg = `You have not configured and imported the Firebase SDK.
 Make sure you go through the codelab setup instructions.`;
@@ -96,6 +95,7 @@ if (!environment.firebaseConfig) {
     FlexLayoutModule,
     StartModuleModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SmartAuthModule,
