@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
   <span>{{title}}</span>
-  <span fxFlex></span>
- <button class="icon-button" mat-icon-button aria-label="Toggle menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
+  <span class="fill-horizontal"></span>
+  <!--<button class="icon-button" mat-icon-button aria-label="Toggle menu">-->
+    <!--<mat-icon>more_vert</mat-icon>-->
+  <!--</button>-->
   <button *ngIf="link" routerLink="{{link}}" mat-icon-button aria-label="more details">
     <mat-icon>launch</mat-icon>
   </button>

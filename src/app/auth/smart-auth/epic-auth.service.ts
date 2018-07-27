@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {baseSmartAuthConfig} from './smart-config';
+import {baseSmartAuthConfig, vendorClientReferences} from './smart-config';
 import {OAuthService} from '../../../angular-oauth2-oidc/oauth-service';
 import {NullValidationHandler} from '../../../angular-oauth2-oidc/token-validation/null-validation-handler';
 import {FhirApiEndpoint} from './fhir-api-endpoint';
@@ -40,19 +40,39 @@ export class EpicAuthService {
   }
 
   getEndpoints(): Observable<FhirApiEndpoint[]> {
-    const endpointJsonUrl = '/assets/JSON-files/EndpointsJson.json';
+    return new Observable<FhirApiEndpoint[]>(subscriber => {
+      let pending = 0;
+      for (const vendorRef of vendorClientReferences) {
+        pending++;
 
+        this.getEndpointsFromUrl(vendorRef.url).subscribe( endpoints => {
+          pending--;
+          for (const endpoint of endpoints) {
+            endpoint.clientId = vendorRef.clientId;
+          }
+
+          subscriber.next(endpoints);
+          if (pending === 0) {
+            subscriber.complete();
+          }
+        });
+      }
+    });
+  }
+
+  getEndpointsFromUrl(endpointJsonUrl): Observable<FhirApiEndpoint[]> {
     return this.http.get<FhirApiEndpoint[]>(endpointJsonUrl);
   }
 
-  generateAuthConfig(endpoint: string): Observable<AuthConfig> {
+  generateAuthConfig(endpoint: FhirApiEndpoint): Observable<AuthConfig> {
     return new Observable<AuthConfig>(subscriber => {
       // get auth config from URI
       const config: AuthConfig = Object.assign({}, baseSmartAuthConfig);
 
-      config.issuer = endpoint;
+      config.clientId = endpoint.clientId;
+      config.issuer = endpoint.FHIRPatientFacingURI;
 
-      this.getConfigMetadata(endpoint).subscribe((data: CapabilityStatement) => {
+      this.getConfigMetadata(endpoint.FHIRPatientFacingURI).subscribe((data: CapabilityStatement) => {
         try {
           for (const ext of data.rest[0].security.extension[0].extension) {
             switch (ext.url) {

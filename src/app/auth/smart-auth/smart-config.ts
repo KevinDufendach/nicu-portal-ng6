@@ -3,6 +3,37 @@
 
 import {AuthConfig} from '../../../angular-oauth2-oidc/auth.config';
 
+export const clientIdList = {
+  epic_test: 'a0d973e2-baed-4808-ab27-03df890a33ce',
+  epic_prod: 'eee61f0c-c910-4ff0-beb4-aec2f1f62f17',
+  cerner: 'b75a2703-a5bd-4e78-aad6-46a7b00ed25d',
+  smart_health_it: 'my-smart-health-it-client-id'
+};
+
+export interface VendorClientReference {
+  url: string;
+  clientId: string;
+}
+
+export const vendorClientReferences: VendorClientReference[] = [
+  {
+    url: '/assets/JSON-files/epicTestEndpoints.json',
+    clientId: clientIdList.epic_test
+  },
+  {
+    url: '/assets/JSON-files/epicEndpoints.json',
+    clientId: clientIdList.epic_prod
+  },
+  {
+    url: '/assets/JSON-files/cernerEndpoints.json',
+    clientId: clientIdList.cerner
+  },
+  {
+    url: '/assets/JSON-files/smartHealthItEndpoints.json',
+    clientId: clientIdList.smart_health_it
+  }
+];
+
 export const baseSmartAuthConfig: AuthConfig = {
   // https://manfredsteyer.github.io/angular-oauth2-oidc/docs/
   //         additional-documentation/configure-library-for-implicit-flow-without-discovery-document.html
@@ -16,7 +47,7 @@ export const baseSmartAuthConfig: AuthConfig = {
   redirectUri: window.location.origin + '/dashboard',
 
   // The SPA's id. The SPA is registered with this id at the auth-server
-  clientId: 'a0d973e2-baed-4808-ab27-03df890a33ce',
+  // clientId: 'a0d973e2-baed-4808-ab27-03df890a33ce',
   // clientId: 'eee61f0c-c910-4ff0-beb4-aec2f1f62f17',
 
   // set the scope for the permissions the client should request

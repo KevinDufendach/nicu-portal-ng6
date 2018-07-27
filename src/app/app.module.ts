@@ -4,41 +4,38 @@ import {AppComponent} from './app.component';
 
 import {LandingComponent} from './landing/landing.component';
 import {PatientInfoComponent} from './testing-phase/patient-info/patient-info.component';
-import {JourneyMapComponent} from './journey-map-main/journey-map/journey-map.component';
 import {LearningComponent} from './learning-main/learning/learning.component';
 import {CareTeamComponent} from './care-team-main/care-team/care-team.component';
 import {NicViewComponent} from './nic-view/nic-view.component';
 import {StartComponent} from './auth/start/start.component';
-import { IframetestComponent } from './testing-phase/iframetest/iframetest.component';
-import { FlexlayouttestComponent } from './testing-phase/flexlayouttest/flexlayouttest.component';
-import { PushNotificationPrefComponent } from './testing-phase/push-notification-pref/push-notification-pref.component';
-import { NotificationChatComponent } from './testing-phase/notification-chat/notification-chat.component';
-import { PatientDataComponent } from './landing/patient-data/patient-data.component';
-import { JourneyMapDetailsComponent } from './journey-map-main/journey-map-details/journey-map-details.component';
-import { DashboardCardToolbarComponent } from './landing/dashboard-card-toolbar/dashboard-card-toolbar.component';
-import { JourneyMapMainComponent } from './journey-map-main/journey-map-main.component';
-import { CareTeamMainComponent } from './care-team-main/care-team-main.component';
-import { LearningMainComponent } from './learning-main/learning-main.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { ChartsComponent } from './chartsmain/charts/charts.component';
+import {IframetestComponent} from './testing-phase/iframetest/iframetest.component';
+import {FlexlayouttestComponent} from './testing-phase/flexlayouttest/flexlayouttest.component';
+import {PushNotificationPrefComponent} from './testing-phase/push-notification-pref/push-notification-pref.component';
+import {NotificationChatComponent} from './testing-phase/notification-chat/notification-chat.component';
+import {JourneyMapDetailsComponent} from './journey-map-main/journey-map-details/journey-map-details.component';
+import {JourneyMapMainComponent} from './journey-map-main/journey-map-main.component';
+import {CareTeamMainComponent} from './care-team-main/care-team-main.component';
+import {LearningMainComponent} from './learning-main/learning-main.component';
+import {SidenavComponent} from './sidenav/sidenav.component';
+import {ChartsComponent} from './chartsmain/charts/charts.component';
 
 import {SmartAuthModule} from './auth/smart-auth/smart-auth.module';
 import {HttpClientModule} from '@angular/common/http';
-import { LayoutModule } from '@angular/cdk/layout';
+import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ChartsModule} from 'ng2-charts';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireModule} from 'angularfire2';
 import {AppRoutingModule} from './routing/app-routing.module';
 import {MaterialImportsModule} from './imports/material-imports/material-imports.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import {JourneymapService} from './journey-map-main/journeymap.service';
-import { ChartsmainComponent } from './chartsmain/chartsmain.component';
-import { GrowthchartComponent } from './growthchart/growthchart.component';
+import {ChartsmainComponent} from './chartsmain/chartsmain.component';
+import {GrowthchartComponent} from './growthchart/growthchart.component';
 import {StartModuleModule} from './start-module/start-module.module';
 import {ThemeService} from './theme.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -60,8 +57,6 @@ if (!environment.firebaseConfig) {
     window.alert(bucketErrMsg);
   }
 }
-
-
 
 
 @NgModule({

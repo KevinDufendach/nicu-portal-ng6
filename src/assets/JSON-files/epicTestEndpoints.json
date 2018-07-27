@@ -10,9 +10,5 @@
   {
     "OrganizationName": "UC Dev Server",
     "FHIRPatientFacingURI": "https://epic-soap-test.uchealth.com/FHIRProxy/api/FHIR/DSTU2/"
-  },
-  {
-    "OrganizationName": "SMART Test Server",
-    "FHIRPatientFacingURI": "https://launch.smarthealthit.org/v/r2/sim/eyJrIjoiMSIsImIiOiIxYzMzYjIzNi1hNjc4LTRlZTctODYzZS1iYWIwMDQ4MWEyZjMifQ/fhir/"
   }
 ]
