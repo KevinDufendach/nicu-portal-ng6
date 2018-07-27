@@ -1,10 +1,3 @@
-<!--<button (click)="getWeights()" mat-raised-button>get weights</button>-->
-<button (click)="putWeightsInArray()" mat-raised-button>put weights in array</button>
-<button (click)="updateChart()" mat-raised-button>Show your weights on the graph </button>
-
-<!--<button (click)="convert()" mat-raised-button>convert</button>-->
-
-<!--<button (click)="createLine()" mat-raised-button>create the line </button>-->
 
 <div class="chart">
   <canvas baseChart width="400" height="400"
@@ -17,10 +10,8 @@
 </div>
 
 <mat-card>
-  <p>Definition of percentile?</p>
-  <p>add a growth chart?</p>
-  <p>Calculation for your child percentile weight?</p>
+  <h4>Weight Observations</h4>
   <ul>
-    <li *ngFor="let wt of weightList">{{wt}}</li>
+    <li *ngFor="let wtQuantity of weightList">{{wtQuantity}} kg</li>
   </ul>
 </mat-card>
