@@ -1,34 +1,43 @@
 <mat-card class="login-card">
   <header>
-  <mat-card-header class="start-header">
-    <mat-card-title class="start-card-title">Log In</mat-card-title>
-  </mat-card-header>
+    <mat-card-header class="start-header">
+      <mat-card-title class="start-card-title">Log In</mat-card-title>
+    </mat-card-header>
   </header>
   <mat-card-content class="start-content">
     <!---->
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input  type="text" placeholder="Check for your organization" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option}}
+    <form class="endpoint-form">
+      <mat-form-field class="full-width">
+        <input type="text"
+               placeholder="Hospital or health system"
+               aria-label="Healthcare System"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let endpoint of filteredOptions  | async"
+            [value]="endpoint">
+            {{endpoint.OrganizationName}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
 
-    <!---->
-    <mat-form-field class="start-form-field">
-      <mat-select
-        #endpointSelector
-        placeholder="Organization"
-        [(value)]="selectedEndpoint"
-        (selectionChange)="onSelectionChange(endpointSelector.value)">
-        <mat-option *ngFor="let endpoint of endpoints" [value]="endpoint">
-          {{ endpoint.OrganizationName }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--<mat-form-field class="start-form-field">-->
+      <!--<mat-select-->
+        <!--#endpointSelector-->
+        <!--placeholder="Organization"-->
+        <!--[(value)]="selectedEndpoint"-->
+        <!--(selectionChange)="onSelectionChange(endpointSelector.value)">-->
+
+        <!--<mat-option *ngFor="let endpoint of endpoints" [value]="endpoint">-->
+          <!--{{ endpoint.OrganizationName }}-->
+        <!--</mat-option>-->
+      <!--</mat-select>-->
+    <!--</mat-form-field>-->
+
     <div class="loading-area">
       <div *ngIf="loading">
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -39,6 +48,14 @@
   <mat-card-actions align="end">
     <button mat-raised-button (click)="login()" class="mat-primary" [disabled]="!ready">Log In</button>
   </mat-card-actions>
+  <h3>options</h3>
+  <ul>
+    <li *ngFor="let endpoint of endpoints">{{endpoint.OrganizationName}}</li>
+  </ul>
+  <h3>Filtered options</h3>
+  <ul>
+    <li *ngFor="let endpoint of filteredOptions | async">{{endpoint.OrganizationName}}</li>
+  </ul>
 </mat-card>
 
 
