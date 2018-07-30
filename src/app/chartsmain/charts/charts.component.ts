@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EpicAuthService} from '../../auth/smart-auth/epic-auth.service';
 import {FhirService} from '../../auth/fhir/fhir.service';
 import Patient = fhir.Patient;
@@ -10,7 +10,7 @@ import Observation = fhir.Observation;
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent implements OnInit, AfterContentInit {
+export class ChartsComponent implements OnInit {
   patient: Patient;
   observationList: Observation[] = [];
   weightList: any[] = [];
@@ -57,11 +57,6 @@ export class ChartsComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     this.initiate();
-
-    // this.getWeights();
-    // this.putWeightsInArray();
-    // console.log(this.weightList);
-    // this.updateChart();
   }
 
   async initiate() {
@@ -69,11 +64,6 @@ export class ChartsComponent implements OnInit, AfterContentInit {
     await this.getPatient();
     await this.getWeights();
   }
-
-  ngAfterContentInit() {
-
-  }
-
   async getPatient() {
     await this.fhirService.getPatient().subscribe(pt => this.patient = pt);
   }

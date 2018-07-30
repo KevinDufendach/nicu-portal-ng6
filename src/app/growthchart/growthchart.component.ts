@@ -285,51 +285,55 @@ export class GrowthchartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.epicAuthService.completeLoginWithCode().then(_ => {
-        this.getPatient();
-        this.getWeights();
-      }
-    );
+    this.initiate();
   }
 
-  getPatient() {
-    this.fhirService.getPatient().subscribe(pt =>
-      this.patient = pt
-    );
+  async initiate() {
+    await this.epicAuthService.completeLoginWithCode();
+    await this.getPatient();
+    await this.getWeights();
   }
 
-  getWeights() {
-    this.fhirService.getObservations('29463-7')
+  async getPatient() {
+    await this.fhirService.getPatient().subscribe(pt => this.patient = pt);
+  }
+
+  async getWeights() {
+    await this.fhirService.getObservations('29463-7')
       .subscribe(
         obs => {
           this.observationList.push(obs);
-          // console.log(this.observationList[0]);
-        });
-    // getChartData(): void {
-    //   this.chartService.getChartData()
-    //     .subscribe(chartData => this.chartData = chartData);
-    //   console.log('yo');
-    // }
+          console.log('putting in an observation');
+        },
+        error => console.log(error),
+        () => {
+          this.putWeightsInArray();
+          console.log('weight are now in array');
+          console.log(this.weightList);
+          this.updateChart();
+        }
+      );
   }
 
   putWeightsInArray() {
     for (let i = 0; i < this.observationList.length; i++) {
       this.weightList.push(this.observationList[i].valueQuantity.value);
+      this.lineChartLabels.push(this.observationList[i].effectiveDateTime);
     }
     this.weightList.reverse();
+    this.lineChartLabels.reverse();
   }
 
-  public randomize(): void {
+  public updateChart(): void {
+    console.log('updating chart');
+
     const _lineChartData: Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
       _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
       for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-        _lineChartData[0] = this.weightList;
+        _lineChartData[i] = this.weightList;
       }
     }
-    // this.lineChartLabels = this.lineChartLabels2;
-    // console.log(this.lineChartLabels2);
-    // console.log(this.lineChartLabels);
     this.lineChartData = _lineChartData[0];
   }
 }
