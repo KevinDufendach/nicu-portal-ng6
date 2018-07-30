@@ -48,14 +48,6 @@
   <mat-card-actions align="end">
     <button mat-raised-button (click)="login()" class="mat-primary" [disabled]="!ready">Log In</button>
   </mat-card-actions>
-  <h3>options</h3>
-  <ul>
-    <li *ngFor="let endpoint of endpoints">{{endpoint.OrganizationName}}</li>
-  </ul>
-  <h3>Filtered options</h3>
-  <ul>
-    <li *ngFor="let endpoint of filteredOptions | async">{{endpoint.OrganizationName}}</li>
-  </ul>
 </mat-card>
 
 

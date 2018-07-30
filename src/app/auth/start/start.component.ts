@@ -56,7 +56,12 @@ export class StartComponent implements OnInit {
 
     this.themeservice.currentMessage.subscribe(message => this.message = message);
 
-
+    this.myControl.valueChanges.subscribe((curValue) => {
+      if (typeof curValue === 'object') {
+        this.selectedEndpoint = curValue;
+        this.getEndpointConfig(this.selectedEndpoint);
+      }
+    });
   }
 
   getEndpointConfig(endpoint: FhirApiEndpoint) {
