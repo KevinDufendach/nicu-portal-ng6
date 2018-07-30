@@ -5,7 +5,6 @@
     </mat-card-header>
   </header>
   <mat-card-content class="start-content">
-    <!---->
     <form class="endpoint-form">
       <mat-form-field class="full-width">
         <input type="text"
@@ -24,20 +23,6 @@
       </mat-form-field>
     </form>
 
-    <!--&lt;!&ndash;&ndash;&gt;-->
-    <!--<mat-form-field class="start-form-field">-->
-      <!--<mat-select-->
-        <!--#endpointSelector-->
-        <!--placeholder="Organization"-->
-        <!--[(value)]="selectedEndpoint"-->
-        <!--(selectionChange)="onSelectionChange(endpointSelector.value)">-->
-
-        <!--<mat-option *ngFor="let endpoint of endpoints" [value]="endpoint">-->
-          <!--{{ endpoint.OrganizationName }}-->
-        <!--</mat-option>-->
-      <!--</mat-select>-->
-    <!--</mat-form-field>-->
-
     <div class="loading-area">
       <div *ngIf="loading">
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -45,6 +30,7 @@
       </div>
     </div>
   </mat-card-content>
+
   <mat-card-actions align="end">
     <button mat-raised-button (click)="login()" class="mat-primary" [disabled]="!ready">Log In</button>
   </mat-card-actions>
