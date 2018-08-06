@@ -21,6 +21,10 @@ export class NotificationChatComponent implements OnInit {
   profilePicStyles: {};
   topics = '';
   value = '';
+  currentuID;
+  selectedUser: string;
+  selecteduID = this.currentuID;
+  userIDs: Observable<any[]>;
 
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, public snackBar: MatSnackBar) {
     this.user = afAuth.authState;
@@ -29,13 +33,20 @@ export class NotificationChatComponent implements OnInit {
       this.currentUser = user;
 
       if (user) { // User is signed in!
+        this.currentuID = firebase.auth().currentUser.uid;
+        this.selecteduID = this.selectedUser;
         this.profilePicStyles = {
           'background-image':  `url(${this.currentUser.photoURL})`
         };
 
         // We load currently existing chat messages.
-        this.messages = this.db.list<any>('/messages', ref => ref.limitToLast(12)).valueChanges();
+        this.messages = this.db.list<any>('/messaging/' + this.currentuID + '/' + this.selecteduID, ref => ref.limitToLast(12)).valueChanges();
+        console.log(this.selecteduID);
+        console.log('asfpioahfpioasfuioasfuiobasuiolfbasuilfbasuilf');
+        this.userIDs = this.db.list<any>('/users/userIDs', ref => ref.limitToLast(12)).valueChanges();
         this.messages.subscribe((messages) => {
+          console.log('messages');
+          console.log(this.messages);
           // Calculate list of recently discussed topics
           const topicsMap = {};
           const topics = [];
@@ -66,6 +77,40 @@ export class NotificationChatComponent implements OnInit {
             document.getElementById('message').focus();
           }, 500);
         });
+        this.userIDs.subscribe((users) => {
+          console.log('users');
+          console.log(this.userIDs);
+          // Calculate list of recently discussed topics
+          const topicsMap = {};
+          const topics = [];
+          let hasEntities = false;
+          users.forEach((messages) => {
+            if (messages.entities) {
+              for (const entity of messages.entities) {
+                if (!topicsMap.hasOwnProperty(entity.name)) {
+                  topicsMap[entity.name] = 0;
+                }
+                topicsMap[entity.name] += entity.salience;
+                hasEntities = true;
+              }
+            }
+          });
+          if (hasEntities) {
+            for (const name of Object.keys(topicsMap)) {
+              topics.push({ name, score: topicsMap[name] });
+            }
+            topics.sort((a, b) => b.score - a.score);
+            this.topics = topics.map((topic) => topic.name).join(', ');
+          }
+
+          // Make sure new message scroll into view
+          setTimeout(() => {
+            const messageList = document.getElementById('messages');
+            messageList.scrollTop = messageList.scrollHeight;
+            document.getElementById('message').focus();
+          }, 500);
+        });
+
 
         // We save the Firebase Messaging Device token and enable notifications.
         this.saveMessagingDeviceToken();
@@ -114,11 +159,25 @@ export class NotificationChatComponent implements OnInit {
 
     if (this.value && this.checkSignedInWithMessage()) {
       // Add a new message entry to the Firebase Database.
-      const messages = this.db.list('/messages');
+      const messages = this.db.list('/messaging/' + this.selecteduID + '/' + this.currentuID);
+      const users = this.db.list('/users/userIDs');
       messages.push({
         name: this.currentUser.displayName,
         text: this.value,
-        photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL
+        photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL,
+        userId: this.currentuID
+      }).then(() => {
+        // Clear message text field and SEND button state.
+        el.value = '';
+      }, (err) => {
+        this.snackBar.open('Error writing new message to Firebase Database.', null, {
+          duration: 5000
+        });
+        console.error(err);
+      });
+      users.push({
+        name: this.currentUser.displayName,
+        userId: this.currentuID
       }).then(() => {
         // Clear message text field and SEND button state.
         el.value = '';

@@ -15,8 +15,7 @@ exports.addWelcomeMessages = functions.auth.user().onCreate((user) => {
     text: `${fullName} signed in for the first time! Welcome!`
   });
 });
-
-exports.sendNotifications = functions.database.ref('/messages/{messageId}').onWrite((change) => {
+exports.sendNotifications = functions.database.ref('users/{userId}/Messages/{messageId}').onWrite((change) => {
   // Only send a notification when a message has been created.
   if (change.before.val()) {
     return;

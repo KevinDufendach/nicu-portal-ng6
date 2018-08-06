@@ -15,6 +15,18 @@
           <i class="material-icons">account_circle</i>Sign-in with Google
         </button>
       </div>
+      <mat-form-field>
+        <mat-select
+          placeholder="Favorite food"
+          #userSelector
+          [(value)]="selectedUser"
+          (selectionChange)="selecteduID = userSelector.value">
+          <p>{{selecteduID}}</p>
+          <mat-option *ngFor="let user of userIDs | async" [value]="user.userId">
+            {{user.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </header>
 
@@ -37,6 +49,7 @@
               <div class="name">{{ message.name }}</div>
             </div>
           </div>
+          </div>
           <div *ngIf="topics"><em>Recent topics: {{ topics }}</em></div>
           <form id="message-form" (submit)="saveMessage($event, box)">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -57,6 +70,5 @@
           </form>
         </div>
       </div>
-    </div>
   </main>
 </div>
