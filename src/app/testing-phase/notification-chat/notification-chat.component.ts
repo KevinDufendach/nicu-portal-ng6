@@ -34,49 +34,12 @@ export class NotificationChatComponent implements OnInit {
 
       if (user) { // User is signed in!
         this.currentuID = firebase.auth().currentUser.uid;
-        this.selecteduID = this.selectedUser;
         this.profilePicStyles = {
           'background-image':  `url(${this.currentUser.photoURL})`
         };
 
         // We load currently existing chat messages.
-        this.messages = this.db.list<any>('/messaging/' + this.currentuID + '/' + this.selecteduID, ref => ref.limitToLast(12)).valueChanges();
-        console.log(this.selecteduID);
-        console.log('asfpioahfpioasfuioasfuiobasuiolfbasuilfbasuilf');
         this.userIDs = this.db.list<any>('/users/userIDs', ref => ref.limitToLast(12)).valueChanges();
-        this.messages.subscribe((messages) => {
-          console.log('messages');
-          console.log(this.messages);
-          // Calculate list of recently discussed topics
-          const topicsMap = {};
-          const topics = [];
-          let hasEntities = false;
-          messages.forEach((message) => {
-            if (message.entities) {
-              for (const entity of message.entities) {
-                if (!topicsMap.hasOwnProperty(entity.name)) {
-                  topicsMap[entity.name] = 0;
-                }
-                topicsMap[entity.name] += entity.salience;
-                hasEntities = true;
-              }
-            }
-          });
-          if (hasEntities) {
-            for (const name of Object.keys(topicsMap)) {
-              topics.push({ name, score: topicsMap[name] });
-            }
-            topics.sort((a, b) => b.score - a.score);
-            this.topics = topics.map((topic) => topic.name).join(', ');
-          }
-
-          // Make sure new message scroll into view
-          setTimeout(() => {
-            const messageList = document.getElementById('messages');
-            messageList.scrollTop = messageList.scrollHeight;
-            document.getElementById('message').focus();
-          }, 500);
-        });
         this.userIDs.subscribe((users) => {
           console.log('users');
           console.log(this.userIDs);
@@ -122,7 +85,45 @@ export class NotificationChatComponent implements OnInit {
       }
     });
   }
+  onSelectionChange() {
+    this.selecteduID = this.selectedUser;
+    this.messages = this.db.list<any>('/messaging/' + this.currentuID + '/' + this.selecteduID, ref => ref.limitToLast(12)).valueChanges();
+    console.log(this.selecteduID);
+    console.log('asfpioahfpioasfuioasfuiobasuiolfbasuilfbasuilf');
+    this.messages.subscribe((messages) => {
+      console.log('messages');
+      console.log(this.messages);
+      // Calculate list of recently discussed topics
+      const topicsMap = {};
+      const topics = [];
+      let hasEntities = false;
+      messages.forEach((message) => {
+        if (message.entities) {
+          for (const entity of message.entities) {
+            if (!topicsMap.hasOwnProperty(entity.name)) {
+              topicsMap[entity.name] = 0;
+            }
+            topicsMap[entity.name] += entity.salience;
+            hasEntities = true;
+          }
+        }
+      });
+      if (hasEntities) {
+        for (const name of Object.keys(topicsMap)) {
+          topics.push({ name, score: topicsMap[name] });
+        }
+        topics.sort((a, b) => b.score - a.score);
+        this.topics = topics.map((topic) => topic.name).join(', ');
+      }
 
+      // Make sure new message scroll into view
+      setTimeout(() => {
+        const messageList = document.getElementById('messages');
+        messageList.scrollTop = messageList.scrollHeight;
+        document.getElementById('message').focus();
+      }, 500);
+    });
+  }
   login() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }

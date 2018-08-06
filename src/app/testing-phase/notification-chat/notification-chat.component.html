@@ -20,10 +20,10 @@
           placeholder="Favorite food"
           #userSelector
           [(value)]="selectedUser"
-          (selectionChange)="selecteduID = userSelector.value">
-          <p>{{selecteduID}}</p>
+          (selectionChange)= "onSelectionChange()">
           <mat-option *ngFor="let user of userIDs | async" [value]="user.userId">
             {{user.name}}
+            {{user.userId}}
           </mat-option>
         </mat-select>
       </mat-form-field>
