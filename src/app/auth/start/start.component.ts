@@ -72,6 +72,7 @@ export class StartComponent implements OnInit {
     this.epicAuthService.generateAuthConfig(endpoint).subscribe(config => {
       console.log('configuration information retrieved');
       this.endpointConfig = config;
+      this.themeservice.changeMessage(endpoint.OrganizationName);
       console.log(this.selectedEndpoint.OrganizationName);
       console.log(this.selectedEndpoint.FHIRPatientFacingURI);
       this.loading = false;
