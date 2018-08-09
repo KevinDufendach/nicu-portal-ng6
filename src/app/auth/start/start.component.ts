@@ -8,6 +8,8 @@ import {ThemeService} from '../../theme.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
 import {map, startWith} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-start',
@@ -24,6 +26,8 @@ export class StartComponent implements OnInit {
   endpoints: FhirApiEndpoint[] = [];
   selectedEndpoint: FhirApiEndpoint;
   endpointConfig: AuthConfig;
+  error: number;
+  private sub: any;
 
   loading = false;
   ready = false;
@@ -33,12 +37,27 @@ export class StartComponent implements OnInit {
     public epicAuthService: EpicAuthService,
     private meta: Meta,
     private overlayContainer: OverlayContainer,
+    private route: ActivatedRoute,
+    public snackBar: MatSnackBar
   ) {
     overlayContainer.getContainerElement().classList.add('custom-theme');
   }
 
   ngOnInit() {
-    this.epicAuthService.getEndpoints().subscribe(
+    this.sub = this.route.params.subscribe((params) => {
+    if (params['error'] !== undefined) {
+
+      // Get the param straight
+      this.error = params['error'];
+      this.snackBar
+        .open('You got the error ' + this.error, '', {
+          duration: 5000
+        });
+
+      return false;
+    }
+  });
+      this.epicAuthService.getEndpoints().subscribe(
       endpoints => this.endpoints = [...this.endpoints, ...endpoints],
       error => console.log(error),
       () => this.filteredOptions = this.myControl.valueChanges

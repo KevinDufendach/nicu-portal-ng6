@@ -25,6 +25,7 @@ export class NotificationChatComponent implements OnInit {
   selectedUser: string;
   selecteduID = this.currentuID;
   userIDs: Observable<any[]>;
+  userRead: Observable<any[]>;
 
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, public snackBar: MatSnackBar) {
     this.user = afAuth.authState;
@@ -65,7 +66,6 @@ export class NotificationChatComponent implements OnInit {
             topics.sort((a, b) => b.score - a.score);
             this.topics = topics.map((topic) => topic.name).join(', ');
           }
-
           // Make sure new message scroll into view
           setTimeout(() => {
             const messageList = document.getElementById('messages');
@@ -141,6 +141,7 @@ export class NotificationChatComponent implements OnInit {
   checkSignedInWithMessage() {
     // Return true if the user is signed in Firebase
     if (this.currentUser) {
+      //      // if (this.currentUser = this.userRead)
       return true;
     }
 
@@ -161,6 +162,7 @@ export class NotificationChatComponent implements OnInit {
     if (this.value && this.checkSignedInWithMessage()) {
       // Add a new message entry to the Firebase Database.
       const messages = this.db.list('/messaging/' + this.selecteduID + '/' + this.currentuID);
+      const saveMessageSelf = this.db.list('/messaging/' + this.currentuID + '/' + this.selecteduID);
       const users = this.db.list('/users/userIDs');
       messages.push({
         name: this.currentUser.displayName,
@@ -178,6 +180,20 @@ export class NotificationChatComponent implements OnInit {
       });
       users.push({
         name: this.currentUser.displayName,
+        userId: this.currentuID
+      }).then(() => {
+        // Clear message text field and SEND button state.
+        el.value = '';
+      }, (err) => {
+        this.snackBar.open('Error writing new message to Firebase Database.', null, {
+          duration: 5000
+        });
+        console.error(err);
+      });
+      saveMessageSelf.push({
+        name: this.currentUser.displayName,
+        text: this.value,
+        photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL,
         userId: this.currentuID
       }).then(() => {
         // Clear message text field and SEND button state.

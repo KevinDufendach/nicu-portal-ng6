@@ -4,13 +4,14 @@ import {FhirService} from '../../auth/fhir/fhir.service';
 import Patient = fhir.Patient;
 import Observation = fhir.Observation;
 
-
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
+  displayedColumns: string[] = ['weights'];
+  dataSource;
   patient: Patient;
   observationList: Observation[] = [];
   weightList: any[] = [];
@@ -80,6 +81,7 @@ export class ChartsComponent implements OnInit {
           this.putWeightsInArray();
           console.log('weight are now in array');
           console.log(this.weightList);
+          this.dataSource = this.weightList;
           this.updateChart();
         }
       );

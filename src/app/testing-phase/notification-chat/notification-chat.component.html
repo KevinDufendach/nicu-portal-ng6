@@ -17,13 +17,12 @@
       </div>
       <mat-form-field>
         <mat-select
-          placeholder="Favorite food"
+          placeholder="User to Message"
           #userSelector
           [(value)]="selectedUser"
           (selectionChange)= "onSelectionChange()">
           <mat-option *ngFor="let user of userIDs | async" [value]="user.userId">
             {{user.name}}
-            {{user.userId}}
           </mat-option>
         </mat-select>
       </mat-form-field>

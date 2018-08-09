@@ -13,8 +13,7 @@ import {MatSnackBarModule} from '@angular/material';
 import {MatFormFieldModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
-
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -36,6 +35,7 @@ const materialModules = [
   MatSelectModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
+  MatTableModule,
   MatSnackBarModule,
 ];
 @NgModule({
