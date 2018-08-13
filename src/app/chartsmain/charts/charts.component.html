@@ -1,6 +1,6 @@
-
-<div class="chart">
-  <canvas baseChart width="400" height="400"
+<body>
+<div class="chart-desktop" [hidden]="(isHandset$ | async) ">
+  <canvas baseChart width="1200" height="600"
           [datasets]="lineChartData"
           [labels]="lineChartLabels"
           [options]="lineChartOptions"
@@ -9,7 +9,17 @@
           [chartType]="lineChartType"></canvas>
 </div>
 
-<mat-card>
+<div class="chart-mobile" [hidden]="!(isHandset$ | async) ">
+  <canvas baseChart width="300" height="275"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"></canvas>
+</div>
+
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -24,4 +34,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</mat-card>
+</body>

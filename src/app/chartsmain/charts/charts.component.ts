@@ -3,6 +3,9 @@ import {EpicAuthService} from '../../auth/smart-auth/epic-auth.service';
 import {FhirService} from '../../auth/fhir/fhir.service';
 import Patient = fhir.Patient;
 import Observation = fhir.Observation;
+import {Observable} from 'rxjs';
+import {Breakpoints, BreakpointObserver} from '@angular/cdk/layout';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-charts',
@@ -15,6 +18,10 @@ export class ChartsComponent implements OnInit {
   patient: Patient;
   observationList: Observation[] = [];
   weightList: any[] = [];
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
 
   lineChartData: Array<any> = [
     {data: [1, 3, 5, 7, 9], label: 'Your Child'},
@@ -53,7 +60,9 @@ export class ChartsComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
 
-  constructor(public epicAuthService: EpicAuthService, public fhirService: FhirService) {
+  constructor(public epicAuthService: EpicAuthService,
+              public fhirService: FhirService,
+              private breakpointObserver: BreakpointObserver) {
   }
 
   ngOnInit() {

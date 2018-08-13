@@ -144,7 +144,6 @@ export class NotificationChatComponent implements OnInit {
       //      // if (this.currentUser = this.userRead)
       return true;
     }
-
     this.snackBar
       .open('You must sign-in first', 'Sign in', {
         duration: 5000
