@@ -6,13 +6,13 @@ admin.initializeApp(functions.config().firebase);
 exports.addWelcomeMessages = functions.auth.user().onCreate((user) => {
   console.log('A new user signed in for the first time.');
   const fullName = user.displayName || 'Anonymous';
+  const currentID = user.uid;
 
 // Saves the new welcome message into the database
 // which then displays it in the FriendlyChat clients.
-  return admin.database().ref('messages').push({
-    name: 'Firebase Bot',
-    photoUrl: '/assets/images/firebase-logo.png', // Firebase logo
-    text: `${fullName} signed in for the first time! Welcome!`
+  return admin.database().ref('users/userID').push({
+    name: fullName,
+    userId: currentID,
   });
 });
 exports.sendNotifications = functions.database.ref('users/{userId}/Messages/{messageId}').onWrite((change) => {

@@ -25,7 +25,6 @@ export class NotificationChatComponent implements OnInit {
   selectedUser: string;
   selecteduID = this.currentuID;
   userIDs: Observable<any[]>;
-  userRead: Observable<any[]>;
 
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, public snackBar: MatSnackBar) {
     this.user = afAuth.authState;
@@ -40,7 +39,7 @@ export class NotificationChatComponent implements OnInit {
         };
 
         // We load currently existing chat messages.
-        this.userIDs = this.db.list<any>('/users/userIDs', ref => ref.limitToLast(12)).valueChanges();
+        this.userIDs = this.db.list<any>('/users/userID', ref => ref.limitToLast(12)).valueChanges();
         this.userIDs.subscribe((users) => {
           console.log('users');
           console.log(this.userIDs);
@@ -162,23 +161,10 @@ export class NotificationChatComponent implements OnInit {
       // Add a new message entry to the Firebase Database.
       const messages = this.db.list('/messaging/' + this.selecteduID + '/' + this.currentuID);
       const saveMessageSelf = this.db.list('/messaging/' + this.currentuID + '/' + this.selecteduID);
-      const users = this.db.list('/users/userIDs');
       messages.push({
         name: this.currentUser.displayName,
         text: this.value,
         photoUrl: this.currentUser.photoURL || PROFILE_PLACEHOLDER_IMAGE_URL,
-        userId: this.currentuID
-      }).then(() => {
-        // Clear message text field and SEND button state.
-        el.value = '';
-      }, (err) => {
-        this.snackBar.open('Error writing new message to Firebase Database.', null, {
-          duration: 5000
-        });
-        console.error(err);
-      });
-      users.push({
-        name: this.currentUser.displayName,
         userId: this.currentuID
       }).then(() => {
         // Clear message text field and SEND button state.

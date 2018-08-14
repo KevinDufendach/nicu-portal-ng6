@@ -2646,7 +2646,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
 // messagingSenderId.
 firebase.initializeApp({
   // TODO add your messagingSenderId
-  messagingSenderId: '191848905130'
+  messagingSenderId: '590136506274'
 });
 let messaging = firebase.messaging();
 
